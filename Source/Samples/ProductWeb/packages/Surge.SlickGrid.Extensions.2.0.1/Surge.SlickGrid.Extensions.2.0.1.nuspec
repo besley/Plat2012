@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Surge.SlickGrid.Extensions</id>
+    <version>2.0.1</version>
+    <title>SlickGrid and Surge SlickGrid Extensions</title>
+    <authors>Surge Consulting Group</authors>
+    <owners>Surge Consulting Group</owners>
+    <licenseUrl>https://github.com/surgeforward/Surge-SlickGrid-Extensions/blob/master/Surge.SlickGrid.Extensions-license.txt</licenseUrl>
+    <projectUrl>http://github.com/surgeforward/Surge-SlickGrid-Extensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Surge SlickGrid Extensions is a set of open-sourced tools that will make using grids in your application a breeze.</description>
+    <summary>Super-powered jQuery Ui Widget for interacting with the SlickGrid javascript grid.</summary>
+    <releaseNotes>- Added yesno special column
+      - Fixes to bad unprefixed namespaces
+      - Added a special edit column
+      - Now raise celldoubleclick event and call column's onDblClick callback
+      - Fixed tabbing on/off LongTextCellEditor
+      - Set slickgrid autoHeight option
+      - Added escapeHtml option that escapes html when no formatter is provided
+      - Grid search core moved into optional Surge.Utility. No longer available
+      - Fix default slickgrid formatter to not print 'null' on null
+      - Fix grid datepicker bug populating 12/31/1969 when date is empty.
+      - Minor bugfixes to grid widget</releaseNotes>
+    <tags>jQuery jQueryUI plugins widgets grid javascript</tags>
+    <dependencies>
+      <dependency id="jQuery" version="1.4.4" />
+      <dependency id="jQuery.UI.Combined" version="1.8.16" />
+    </dependencies>
+  </metadata>
+</package>

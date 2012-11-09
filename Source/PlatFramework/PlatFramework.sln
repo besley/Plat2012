@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plat.DataRepository", "Plat.DataRepository\Plat.DataRepository.csproj", "{1FBA6004-8231-443F-AEDD-7918B7354992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plat.CacheService", "Plat.CacheService\Plat.CacheService.csproj", "{3CB89054-5EC2-4622-B18F-9FB5FD35DB77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FBA6004-8231-443F-AEDD-7918B7354992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBA6004-8231-443F-AEDD-7918B7354992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBA6004-8231-443F-AEDD-7918B7354992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBA6004-8231-443F-AEDD-7918B7354992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB89054-5EC2-4622-B18F-9FB5FD35DB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB89054-5EC2-4622-B18F-9FB5FD35DB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB89054-5EC2-4622-B18F-9FB5FD35DB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB89054-5EC2-4622-B18F-9FB5FD35DB77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

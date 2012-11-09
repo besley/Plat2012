@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.Data</name>
+  </assembly>
+  <members>
+    <member name="T:System.ComponentModel.DataAnnotations.RoundtripOriginalAttribute"></member>
+    <member name="M:System.ComponentModel.DataAnnotations.RoundtripOriginalAttribute.#ctor"></member>
+    <member name="T:System.Web.Http.Data.ChangeOperation">
+      <summary> Enumeration of the types of operations a <see cref="T:System.Web.Http.Data.DataController" /> can perform. </summary>
+    </member>
+    <member name="F:System.Web.Http.Data.ChangeOperation.None">
+      <summary> Indicates that no operation is to be performed </summary>
+    </member>
+    <member name="F:System.Web.Http.Data.ChangeOperation.Insert">
+      <summary> Indicates an operation that inserts new data </summary>
+    </member>
+    <member name="F:System.Web.Http.Data.ChangeOperation.Update">
+      <summary> Indicates an operation that updates existing data </summary>
+    </member>
+    <member name="F:System.Web.Http.Data.ChangeOperation.Delete">
+      <summary> Indicates an operation that deletes existing data </summary>
+    </member>
+    <member name="F:System.Web.Http.Data.ChangeOperation.Custom">
+      <summary> Indicates a custom update operation </summary>
+    </member>
+    <member name="T:System.Web.Http.Data.ChangeSet">
+      <summary> Represents a set of changes to be processed by a <see cref="T:System.Web.Http.Data.DataController" />. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ChangeSet.#ctor(System.Collections.Generic.IEnumerable{System.Web.Http.Data.ChangeSetEntry})">
+      <summary> Initializes a new instance of the ChangeSet class </summary>
+      <param name="changeSetEntries">The set of <see cref="T:System.Web.Http.Data.ChangeSetEntry" /> items this <see cref="T:System.Web.Http.Data.ChangeSet" /> represents.</param>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSet.ChangeSetEntries">
+      <summary> Gets the set of <see cref="T:System.Web.Http.Data.ChangeSetEntry" /> items this <see cref="T:System.Web.Http.Data.ChangeSet" /> represents. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ChangeSet.GetOriginal``1(``0)">
+      <summary> Returns the original unmodified entity for the provided clientEntity. </summary>
+      <param name="clientEntity">The client modified entity.</param>
+      <typeparam name="TEntity">The entity type.</typeparam>
+      <exception cref="T:System.ArgumentNullException">clientEntity</exception>
+      <exception cref="T:System.ArgumentException">clientEntity</exception>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSet.HasError">
+      <summary> Gets a value indicating whether any of the <see cref="T:System.Web.Http.Data.ChangeSetEntry" /> items has an error. </summary>
+    </member>
+    <member name="T:System.Web.Http.Data.ChangeSetEntry">
+      <summary> Represents a change operation to be performed on an entity. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ChangeSetEntry.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.ChangeSetEntry" /> class.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.Associations">
+      <summary> Gets or sets the collection of IDs of the associated entities for each association of the Entity </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.ConflictMembers">
+      <summary> Gets or sets the collection of members in conflict. The <see cref="P:System.Web.Http.Data.ChangeSetEntry.StoreEntity" /> property contains the current store value for each member in conflict. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.Entity">
+      <summary> Gets or sets the <see cref="P:System.Web.Http.Data.ChangeSetEntry.Entity" /> being operated on </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.EntityActions">
+      <summary> Gets or sets the custom methods invoked on the entity, as a set of method name / parameter set pairs. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.HasConflict">
+      <summary> Gets a value indicating whether the <see cref="T:System.Web.Http.Data.ChangeSetEntry" /> contains conflicts. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.HasError">
+      <summary>Gets {insert text here}.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.Id">
+      <summary> Gets or sets the client ID for the entity </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.IsDeleteConflict">
+      <summary> Gets or sets whether the conflict is a delete conflict, meaning the entity no longer exists in the store. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.Operation">
+      <summary> Gets or sets the <see cref="T:System.Web.Http.Data.ChangeOperation" /> to be performed on the entity. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.OriginalAssociations">
+      <summary> Gets or sets the collection of IDs for each association of the <see cref="P:System.Web.Http.Data.ChangeSetEntry.OriginalEntity" /></summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.OriginalEntity">
+      <summary> Gets or sets the original state of the entity being operated on </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.StoreEntity">
+      <summary> Gets or sets the state of the entity in the data store </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ChangeSetEntry.ValidationErrors">
+      <summary> Gets or sets the validation errors encountered during the processing of the operation.  </summary>
+    </member>
+    <member name="T:System.Web.Http.Data.DataController"></member>
+    <member name="M:System.Web.Http.Data.DataController.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.DataController" /> class.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.DataController.ActionContext">
+      <summary> Gets the <see cref="T:System.Web.Http.Controllers.HttpActionContext" /> for the currently executing action. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DataController.AuthorizeChangeSet">
+      <summary> Verifies the user is authorized to submit the current <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. </summary>
+      <returns>True if the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> is authorized, false otherwise.</returns>
+    </member>
+    <member name="P:System.Web.Http.Data.DataController.ChangeSet">
+      <summary> Gets the current <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. Returns null if no change operations are being performed. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.DataController.Description">
+      <summary> Gets the <see cref="T:System.Web.Http.Data.DataControllerDescription" /> for this <see cref="T:System.Web.Http.Data.DataController" />. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DataController.ExecuteAsync(System.Void,System.Net.Http.HttpResponseMessage)"></member>
+    <member name="M:System.Web.Http.Data.DataController.ExecuteChangeSet">
+      <summary> This method invokes the action for each operation in the current <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. </summary>
+      <returns>True if the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> was processed successfully, false otherwise.</returns>
+    </member>
+    <member name="M:System.Web.Http.Data.DataController.Initialize(System.Web.Http.Controllers.HttpControllerContext)"></member>
+    <member name="M:System.Web.Http.Data.DataController.PersistChangeSet">
+      <summary> This method is called to finalize changes after all the operations in the current <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> have been invoked. This method should commit the changes as necessary to the data store. Any errors should be set on the individual <see cref="T:System.Web.Http.Data.ChangeSetEntry" />s in the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. </summary>
+      <returns>True if the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> was persisted successfully, false otherwise.</returns>
+    </member>
+    <member name="M:System.Web.Http.Data.DataController.Submit(System.Web.Http.Data.ChangeSet)">
+      <summary> Performs the operations indicated by the specified <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> by invoking the corresponding actions for each. </summary>
+      <returns>True if the submit was successful, false otherwise.</returns>
+      <param name="changeSet">The changeset to submit</param>
+    </member>
+    <member name="M:System.Web.Http.Data.DataController.ValidateChangeSet">
+      <summary> Validates the current <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. Any errors should be set on the individual <see cref="T:System.Web.Http.Data.ChangeSetEntry" />s in the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" />. </summary>
+      <returns>True if all operations in the <see cref="P:System.Web.Http.Data.DataController.ChangeSet" /> passed validation, false otherwise.</returns>
+    </member>
+    <member name="T:System.Web.Http.Data.DataControllerActionInvoker"></member>
+    <member name="M:System.Web.Http.Data.DataControllerActionInvoker.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.DataControllerActionInvoker" /> class.</summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DataControllerActionInvoker.InvokeActionAsync(System.Void,System.Net.Http.HttpResponseMessage)"></member>
+    <member name="T:System.Web.Http.Data.DataControllerActionSelector"></member>
+    <member name="M:System.Web.Http.Data.DataControllerActionSelector.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.DataControllerActionSelector" /> class.</summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DataControllerActionSelector.SelectAction(System.Web.Http.Controllers.HttpControllerContext)"></member>
+    <member name="T:System.Web.Http.Data.DataControllerDescription"></member>
+    <member name="P:System.Web.Http.Data.DataControllerDescription.ControllerType">
+      <summary> Gets the Type of the <see cref="T:System.Web.Http.Data.DataController" /></summary>
+    </member>
+    <member name="P:System.Web.Http.Data.DataControllerDescription.EntityTypes">
+      <summary> Gets the entity types exposed by the <see cref="T:System.Web.Http.Data.DataController" /></summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DataControllerDescription.GetCustomMethod(System.Type,System.String)"></member>
+    <member name="M:System.Web.Http.Data.DataControllerDescription.GetDescription(System.Web.Http.Controllers.HttpControllerDescriptor)"></member>
+    <member name="M:System.Web.Http.Data.DataControllerDescription.GetUpdateAction(System.String)"></member>
+    <member name="M:System.Web.Http.Data.DataControllerDescription.GetUpdateAction(System.Type,System.Web.Http.Data.ChangeOperation)"></member>
+    <member name="T:System.Web.Http.Data.DeleteAttribute">
+      <summary> Attribute applied to a <see cref="T:System.Web.Http.Data.DataController" /> method to indicate that it is a delete method. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.DeleteAttribute.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.DeleteAttribute" /> class.</summary>
+    </member>
+    <member name="T:System.Web.Http.Data.InsertAttribute">
+      <summary> Attribute applied to a <see cref="T:System.Web.Http.Data.DataController" /> method to indicate that it is an insert method. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.InsertAttribute.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.InsertAttribute" /> class.</summary>
+    </member>
+    <member name="T:System.Web.Http.Data.QueryResult">
+      <summary> Represents the results of a query request along with its total count if requested. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.QueryResult.#ctor(System.Collections.IEnumerable,System.Int32)">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.QueryResult" /> class.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.QueryResult.Results">
+      <summary> The results of the query. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.QueryResult.TotalCount">
+      <summary> The total count of the query, without any paging options applied. A TotalCount equal to -1 indicates that the count is equal to the result count. </summary>
+    </member>
+    <member name="T:System.Web.Http.Data.UpdateActionDescriptor"></member>
+    <member name="M:System.Web.Http.Data.UpdateActionDescriptor.#ctor(System.Web.Http.Controllers.HttpControllerDescriptor,System.Reflection.MethodInfo,System.Type,System.Web.Http.Data.ChangeOperation)">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.UpdateActionDescriptor" /> class.</summary>
+    </member>
+    <member name="M:System.Web.Http.Data.UpdateActionDescriptor.Authorize(System.Web.Http.Controllers.HttpActionContext)"></member>
+    <member name="P:System.Web.Http.Data.UpdateActionDescriptor.ChangeOperation">
+      <summary>Gets {insert text here}.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.UpdateActionDescriptor.EntityType">
+      <summary>Gets {insert text here}.</summary>
+    </member>
+    <member name="M:System.Web.Http.Data.UpdateActionDescriptor.Execute(System.Web.Http.Controllers.HttpControllerContext,System.Collections.Generic.IDictionary{System.String,System.Object})"></member>
+    <member name="T:System.Web.Http.Data.UpdateAttribute">
+      <summary> Attribute applied to a <see cref="T:System.Web.Http.Data.DataController" /> method to indicate that it is an update method. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.UpdateAttribute.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.Http.Data.UpdateAttribute" /> class.</summary>
+    </member>
+    <member name="P:System.Web.Http.Data.UpdateAttribute.UsingCustomMethod">
+      <summary> Gets or sets a value indicating whether the method is a custom update operation. </summary>
+    </member>
+    <member name="T:System.Web.Http.Data.ValidationResultInfo">
+      <summary> The data contract of an error that has occurred  during the execution of an operation on the server. This is sent back along with the action  result(s) to the client. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ValidationResultInfo.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary> Constructor accepting a localized error message and and collection  of the names of the members the error originated from. </summary>
+      <param name="message">The localized message</param>
+      <param name="sourceMemberNames">A collection of the names of the members the error originated from.</param>
+    </member>
+    <member name="M:System.Web.Http.Data.ValidationResultInfo.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary> Constructor accepting a localized error message, error code, optional stack trace, and collection of the names of the members the error originated from. </summary>
+      <param name="message">The localized error message</param>
+      <param name="errorCode">The custom error code</param>
+      <param name="stackTrace">The error stack trace</param>
+      <param name="sourceMemberNames">A collection of the names of the members the error originated from.</param>
+    </member>
+    <member name="P:System.Web.Http.Data.ValidationResultInfo.ErrorCode">
+      <summary> Gets or sets custom error code </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ValidationResultInfo.GetHashCode">
+      <summary> Returns the hash code for this object. </summary>
+      <returns>The hash code for this object.</returns>
+    </member>
+    <member name="P:System.Web.Http.Data.ValidationResultInfo.Message">
+      <summary> Gets or sets the error message </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ValidationResultInfo.SourceMemberNames">
+      <summary> Gets or sets the names of the members the error originated from. </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.ValidationResultInfo.StackTrace">
+      <summary> Gets or sets the stack trace of the error </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.ValidationResultInfo.System#IEquatable{T}#Equals(System.Web.Http.Data.ValidationResultInfo)"></member>
+    <member name="T:System.Web.Http.Data.Metadata.MetadataProvider"></member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProvider.#ctor(System.Web.Http.Data.Metadata.MetadataProvider)">
+      <summary> Protected Constructor </summary>
+      <param name="parent">The existing parent provider. May be null.</param>
+    </member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProvider.GetTypeDescriptor(System.Type,System.ComponentModel.ICustomTypeDescriptor)">
+      <summary> Gets the <see cref="T:System.ComponentModel.TypeDescriptor" /> for the specified Type, using the specified parent descriptor as the base. Overrides should call base to ensure the <see cref="T:System.ComponentModel.TypeDescriptor" />s are chained properly. </summary>
+      <returns>The <see cref="T:System.ComponentModel.TypeDescriptor" /> for the specified Type.</returns>
+      <param name="type">The Type to return a descriptor for.</param>
+      <param name="parent">The parent descriptor.</param>
+    </member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProvider.IsEntityType(System.Type)">
+      <summary> Determines if the specified <see cref="T:System.Type" /> is an entity <see cref="T:System.Type" /> by consulting the &lt;see cref="M:System.Web.Http.Data.Metadata.MetadataProvider.LookUpIsEntityType(System.Type)" /&gt; method of all <see cref="T:System.Web.Http.Data.Metadata.MetadataProvider" />s in the provider chain for the <see cref="T:System.Web.Http.Data.DataController" />. </summary>
+      <returns>Returns true if the <see cref="T:System.Type" /> is an entity, false otherwise.</returns>
+      <param name="type">The <see cref="T:System.Type" /> to check.</param>
+    </member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProvider.LookUpIsEntityType(System.Type)">
+      <summary> Determines if the specified <see cref="T:System.Type" /> should be considered an entity <see cref="T:System.Type" />. The base implementation returns false. </summary>
+      <returns>Returns true if the <see cref="T:System.Type" /> should be considered an entity, false otherwise.</returns>
+      <param name="type">The <see cref="T:System.Type" /> to check.</param>
+    </member>
+    <member name="T:System.Web.Http.Data.Metadata.MetadataProviderAttribute">
+      <summary> Attribute applied to a <see cref="T:System.Web.Http.Data.DataController" /> type to specify the <see cref="T:System.Web.Http.Data.Metadata.MetadataProvider" /> for the type. </summary>
+    </member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProviderAttribute.#ctor(System.Type)">
+      <summary> Initializes a new instance of the MetadataProviderAttribute class </summary>
+      <param name="providerType">The <see cref="T:System.Web.Http.Data.Metadata.MetadataProvider" /> type</param>
+    </member>
+    <member name="M:System.Web.Http.Data.Metadata.MetadataProviderAttribute.CreateProvider(System.Type,System.Web.Http.Data.Metadata.MetadataProvider)">
+      <summary> This method creates an instance of the <see cref="T:System.Web.Http.Data.Metadata.MetadataProvider" />. Subclasses can override this method to provide their own construction logic. </summary>
+      <returns>The metadata provider</returns>
+      <param name="controllerType">The <see cref="T:System.Web.Http.Data.DataController" /> type to create a metadata provider for.</param>
+      <param name="parent">The parent provider. May be null.</param>
+    </member>
+    <member name="P:System.Web.Http.Data.Metadata.MetadataProviderAttribute.ProviderType">
+      <summary> Gets the <see cref="T:System.Web.Http.Data.Metadata.MetadataProvider" /> type </summary>
+    </member>
+    <member name="P:System.Web.Http.Data.Metadata.MetadataProviderAttribute.TypeId">
+      <summary> Gets a unique identifier for this attribute. </summary>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>订单列表</title>
+    <style>
+    .cell-title {
+        font-weight: bold;
+    }
+
+    .cell-effort-driven {
+        text-align: center;
+    }
+    </style>
+@*    <link href="~/Content/slick.grid.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/slick.custom.default.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/jquery.ui.custom.css" rel="stylesheet" type="text/css" />*@
+
+  <link rel="stylesheet" href="~/Scripts/SlickGridTest/css/slick.grid.css" type="text/css"/>
+  <link rel="stylesheet" href="~/Scripts/SlickGridTest/css/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="~/Scripts/SlickGridTest/css/example.css" type="text/css"/>
+
+</head>
+
+<body>
+@*    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery.event.drag.js"></script>
+    <script src="~/Scripts/SlickGrid/slick.core.js"></script>
+    <script src="~/Scripts/SlickGrid/slick.grid.js"></script>
+    <script src="~/Scripts/SlickGrid/slick.formatters.js"></script>
+    <script src="~/Scripts/SlickGrid/slick.editors.js"></script>
+    <script src="~/Scripts/SlickGrid/Plugins/slick.cellrangeselector.js"></script>
+    <script src="~/Scripts/SlickGrid/Plugins/slick.cellrangedecorator.js"></script>
+    <script src="~/Scripts/SlickGrid/Plugins/slick.cellselectionmodel.js"></script>
+    <script src="~/Scripts/jquery-ui-1.9.0.js"></script>*@
+    
+    <script src="~/Scripts/SlickGridTest/lib/firebugx.js"></script>
+
+    <script src="~/Scripts/SlickGridTest/lib/jquery-1.7.min.js"></script>
+    <script src="~/Scripts/SlickGridTest/lib/jquery-ui-1.8.16.custom.min.js"></script>
+    <script src="~/Scripts/SlickGridTest/lib/jquery.event.drag-2.0.min.js"></script>
+
+    <script src="~/Scripts/SlickGridTest/slick.core.js"></script>
+    <script src="~/Scripts/SlickGridTest/plugins/slick.cellrangedecorator.js"></script>
+    <script src="~/Scripts/SlickGridTest/plugins/slick.cellrangeselector.js"></script>
+    <script src="~/Scripts/SlickGridTest/plugins/slick.cellselectionmodel.js"></script>
+    <script src="~/Scripts/SlickGridTest/slick.formatter.js"></script>
+    <script src="~/Scripts/SlickGridTest/slick.editors.js"></script>
+    <script src="~/Scripts/SlickGridTest/slick.grid.js"></script>
+
+    <script type="text/javascript">
+    function slickGridLoad() {
+        var gird;
+        var columns = [
+            { id: "ID", name: "Order Id", field: "ID" },
+            { id: "ProductId", name: "Product Id", field: "ProductId" },
+            { id: "BuyAmount", name: "Buy Amount", field: "BuyAmount" },
+            { id: "BuyDate", name: "Buy Date", field: "BuyDate" },
+            { id: "BuyPerson", name: "Buy Person", field: "BuyPerson" }
+        ];
+
+        var options = {
+            editable: true,
+            enableAddRow: true,
+            enableCellNavigation: true,
+            enableColumnReorder: false,
+            asyncEditorLoading: false,
+            autoEdit: false
+        };
+
+        var myData = [];
+        $.getJSON("http://localhost:8081/ProductSys.WebAPI/api/Order", function (data) {
+            //alert(data);
+            myData = data;
+            grid = new Slick.Grid("#orderGrid", data, columns, options);
+
+            grid.setSelectionModel(new Slick.CellSelectionModel());
+
+            grid.onAddNewRow.subscribe(function (e, args) {
+                var item = args.item;
+                grid.invalidateRow(data.length);
+                //grid.push(item);
+                data.push(item);
+                grid.updateRowCount();
+                grid.render();
+            });
+        });
+    }
+
+    function deleteOrder(id) {
+        var c = confirm("确实要删除订单吗?!");
+
+        if (c) {
+            var orderId = $("#orderId").val();
+            $.ajax({
+                type: "Delete",
+                dataType: "json",
+                contentType: "application/json",
+                url: "http://localhost:8081/ProductSys.WebAPI/api/Order/" + orderId,
+                success: function (result) {
+                    alert("has delete one record.");
+                }
+            });
+        }
+    }
+
+    //function getOrders() {
+    //    $.getJSON("http://localhost:8081/ProductSys.WebAPI/api/Order", function (data) {
+    //        $("#tblOrders tr").remove(".dataRow");
+    //        $.each(data, function (idx, ele) {
+    //            $('#tblOrders').append('<tr class="dataRow"><td>' + ele.ID +
+    //                '</td><td>' + ele.ProductId +
+    //                '</td><td>' + ele.BuyAmount +
+    //                '</td><td>' + ele.BuyDate +
+    //                '</td><td>' + ele.BuyPerson +
+    //                '</td></tr>');
+    //        });
+    //    });
+    //}
+    </script>
+
+    <table id="tblOrders" style="width:98%;border:1px;background-color:lightblue;margin-top:8px">
+        <tr style="background-color:#E7E7E7">
+            <td colspan="6">
+                产品列表
+            </td>
+            <td colspan="6">
+                <a href="/ProductWebPortal/Order/Edit" style="color:blue">Add New Order</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                订单ID
+            </td>
+            <td>
+                产品ID
+            </td>
+            <td>
+                购买数量
+            </td>
+            <td>
+                购买日期
+            </td>
+            <td>
+                购买人
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input id="orderId" type="text" value="" style="width:40px" />
+        <input type="button" value="Delete" onclick="deleteOrder()" />
+        <input type="button" value="Load" onclick="slickGridLoad()" />
+    </div>
+    <table>
+        <tr>
+            <td>
+                <div id="orderGrid" style="width:400px;height:300px"></div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

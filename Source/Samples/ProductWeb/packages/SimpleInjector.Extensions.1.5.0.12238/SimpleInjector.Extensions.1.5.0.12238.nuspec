@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SimpleInjector.Extensions</id>
+    <version>1.5.0.12238</version>
+    <title>Simple Injector Extensions</title>
+    <authors>S. van Deursen</authors>
+    <owners>S. van Deursen</owners>
+    <licenseUrl>http://simpleinjector.codeplex.com/license</licenseUrl>
+    <projectUrl>http://simpleinjector.codeplex.com/wikipage?title=Advanced-scenarios</projectUrl>
+    <iconUrl>http://simpleinjector.cuttingedge.it/SimpleInjector.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extensions for the Simple Injector Inversion of Control library for .NET. The Extensions project adds advanced capabilities, such as batch registration, registration of open generic types, and registration of generic decorators.</description>
+    <summary>Extensions for the Simple Injector Inversion of Control library for .NET. The Extensions project adds advanced capabilities, such as batch registration and registration of open generic types.</summary>
+    <releaseNotes>This is a patch release that fixes a few minor bugs in the 1.5.0.12199 version.
+-RegisterOpenGeneric and RegisterSingleOpenGeneric allowed the registration of types that could never be resolved (for instance because they had multiple constructors). They now throw an ArgumentException.
+-RegisterOpenGeneric and RegisterSingleOpenGeneric threw a NullReferenceException when a implementation type was registered that had dependencies that could not be resolved. They now throw an expressive ActivationException.</releaseNotes>
+    <copyright>S. van Deursen 2011</copyright>
+    <language>en-US</language>
+    <tags>simpleinjector architecture dependency-injection DI easy easy-to-use Inversion-of-Control IOC Servicelocator</tags>
+    <dependencies>
+      <dependency id="SimpleInjector" version="1.5.0.12199" />
+    </dependencies>
+  </metadata>
+</package>

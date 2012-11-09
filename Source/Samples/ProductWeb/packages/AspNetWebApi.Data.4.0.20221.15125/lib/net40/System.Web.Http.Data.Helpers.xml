@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.Data.Helpers</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.Http.Data.Helpers.MetadataExtensions"></member>
+    <member name="M:System.Web.Http.Data.Helpers.MetadataExtensions.Metadata``1(System.Web.Mvc.HtmlHelper)">
+      <returns>Returns <see cref="T:System.Web.IHtmlString" />.</returns>
+      <typeparam name="TDataController"></typeparam>
+    </member>
+  </members>
+</doc>

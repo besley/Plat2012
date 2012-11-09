@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SCMDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SCMDBModelStoreContainer">
+          <EntitySet Name="EPCourse" EntityType="SCMDBModel.Store.EPCourse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EPOrder" EntityType="SCMDBModel.Store.EPOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EPProduct" EntityType="SCMDBModel.Store.EPProduct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EPStudent" EntityType="SCMDBModel.Store.EPStudent" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="EPCourse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LevelID" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="EPOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="BuyAmount" Type="int" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="int" />
+          <Property Name="BuyDate" Type="datetime" Nullable="false" />
+          <Property Name="IsArrivaled" Type="bit" Nullable="false" />
+          <Property Name="ArrivaledDate" Type="datetime" />
+          <Property Name="BuyPerson" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EPProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductType" Type="nvarchar" MaxLength="10" />
+          <Property Name="UnitPrice" Type="smallint" />
+          <Property Name="OrderCount" Type="int" />
+        </EntityType>
+        <EntityType Name="EPStudent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="tinyint" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCMDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProductDbContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="EPCourse" EntityType="SCMDBModel.EPCourse" />
+          <EntitySet Name="EPProduct" EntityType="SCMDBModel.EPProduct" />
+          <EntitySet Name="EPStudent" EntityType="SCMDBModel.EPStudent" />
+          <EntitySet Name="EPOrder" EntityType="SCMDBModel.EPOrder" />
+        </EntityContainer>
+        <EntityType Name="EPCourse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CourseName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="LevelID" />
+        </EntityType>
+        <EntityType Name="EPProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductType" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="UnitPrice" />
+          <Property Type="Int32" Name="OrderCount" />
+        </EntityType>
+        <EntityType Name="EPStudent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Sex" />
+          <Property Type="Int32" Name="Age" />
+        </EntityType>
+        <EntityType Name="EPOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="BuyAmount" Nullable="false" />
+          <Property Type="DateTime" Name="BuyDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="BuyPerson" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsArrivaled" Nullable="false" />
+          <Property Type="String" Name="Notes" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DiscountPercentage" />
+          <Property Type="DateTime" Name="ArrivaledDate" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCMDBModelStoreContainer" CdmEntityContainer="ProductDbContext">
+          <EntitySetMapping Name="EPCourse">
+            <EntityTypeMapping TypeName="SCMDBModel.EPCourse">
+              <MappingFragment StoreEntitySet="EPCourse">
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EPProduct">
+            <EntityTypeMapping TypeName="SCMDBModel.EPProduct">
+              <MappingFragment StoreEntitySet="EPProduct">
+                <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EPStudent">
+            <EntityTypeMapping TypeName="SCMDBModel.EPStudent">
+              <MappingFragment StoreEntitySet="EPStudent">
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EPOrder">
+            <EntityTypeMapping TypeName="SCMDBModel.EPOrder">
+              <MappingFragment StoreEntitySet="EPOrder">
+                <ScalarProperty Name="ArrivaledDate" ColumnName="ArrivaledDate" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsArrivaled" ColumnName="IsArrivaled" />
+                <ScalarProperty Name="BuyPerson" ColumnName="BuyPerson" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="BuyAmount" ColumnName="BuyAmount" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

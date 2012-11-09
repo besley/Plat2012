@@ -1,0 +1,9 @@
+﻿<configuration>
+  <system.web.webPages.razor>
+    <pages pageBaseType="System.Web.Mvc.WebViewPage">
+      <namespaces>
+        <add namespace="System.Web.Http.Data.Helpers"/>
+      </namespaces>
+    </pages>
+  </system.web.webPages.razor>
+</configuration>

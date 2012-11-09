@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Upshot</id>
+    <version>1.0.0.2</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetmvc4-beta-eula.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/single-page-application</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Microsoft Upshot JS Library</description>
+    <dependencies>
+      <dependency id="jQuery" version="1.6.2" />
+      <dependency id="knockoutjs" version="2.0.0" />
+    </dependencies>
+  </metadata>
+</package>

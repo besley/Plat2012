@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AspNetWebApi.Data</id>
+    <version>4.0.20221.15125</version>
+    <title>ASP.NET Web API Data WebHost Libraries (Beta)</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetmvc4-beta-eula.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/web-api</projectUrl>
+    <iconUrl>https://download-codeplex.sec.s-msft.com/Download?ProjectName=aspnetwebstack&amp;DownloadId=360555</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Description</description>
+    <dependencies>
+      <dependency id="AspNetWebApi" version="4.0.20126.16343" />
+      <dependency id="EntityFramework" version="4.1.10331.0" />
+    </dependencies>
+  </metadata>
+</package>
