@@ -1,0 +1,205 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello Kitty</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: repeat-x scroll left top transparent;
+            font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+            font-size: 13px;
+            height: 800px;
+        }
+    </style>
+   
+       <link href="Content/themes/base/jquery.ui.all.css" rel="Stylesheet" type="text/css" />
+    <link href="Scripts/slickgrid/css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet"/>
+<link href="Scripts/slickgrid/slick.grid.css" rel="stylesheet"/>
+<link href="Scripts/slickgrid/examples/examples.css" rel="stylesheet"/>
+<link href="Scripts/slickgrid/controls/slick.pager.css" rel="stylesheet"/>
+<link href="Scripts/slickgrid/controls/slick.columnpicker.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="Scripts/jstree/themes/classic/style.css" />
+    <link rel="stylesheet" href="Scripts/cutetabbar/css/cutetabbar.css" />
+    <link rel="stylesheet" href="Content/layout/cute3columns.css" />
+
+    <script type="text/javascript" src="Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.9.2.js"></script>
+    <script type="text/javascript" src="Scripts/jstree/jquery.jstree.js"></script>
+    <script type="text/javascript" src="Scripts/cutetabbar/cutetabbar.js"></script>
+
+    <script src="Scripts/slickgrid/lib/jquery.event.drag-2.0.min.js"></script>
+
+    <script src="Scripts/json2.js"></script>
+<script src="Scripts/toolkit/ajaxHelper.js"></script>
+
+    <script src="Scripts/slickgrid/lib/firebugx.js"></script>
+<script src="Scripts/slickgrid/slick.core.js"></script>
+<script src="Scripts/slickgrid/slick.grid.js"></script>
+<script src="Scripts/slickgrid/slick.formatters.js"></script>
+<script src="Scripts/slickgrid/slick.editors.js"></script>
+<script src="Scripts/slickgrid/slick.dataview.js"></script>
+<script src="Scripts/slickgrid/controls/slick.pager.js"></script>
+<script src="Scripts/slickgrid/controls/slick.columnpicker.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.checkboxselectcolumn.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.cellrangedecorator.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.cellrangeselector.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.cellselectionmodel.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.autotooltips.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.cellcopymanager.js"></script>
+<script src="Scripts/slickgrid/plugins/slick.rowselectionmodel.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var myTree = $("#treeContainerProductSys").jstree({
+                data: {
+                    type: "json",
+                    json: [{ "data": "产品管理", "attr": { "id": "1", "selected": true }, "children": [{ "data": "基础数据", "attr": { "id": "3", "selected": false }, "children": null }, { "data": "订单数据", "attr": { "id": "4", "selected": false }, "children": null }] }, { "data": "采购管理", "attr": { "id": "2", "selected": true }, "children": [{ "data": "供应商列表", "attr": { "id": "5", "selected": false }, "children": null }, { "data": "供应商产品", "attr": { "id": "6", "selected": false }, "children": null }] }]
+                }
+                //,
+                //"plugins": ["themes", "json", "ui"]
+            });
+            myTree.bind("select_node.jstree", function (event, data) {
+                var functionId = $('#treeContainerProductSys').jstree('get_selected').attr('id');
+                loadMainGridData(functionId);
+            });
+
+            $("#testCuteTab").cuteTabBarCtrl({
+                onSelectTab: function (e) {
+                    ;
+                }
+            });
+
+            $("#testNavigateCuteTab").cuteTabBarCtrl({
+                onSelectTab: function (e) {
+                    ;
+                }
+            });
+        })
+
+        function loadMainGridData(functionId) {
+            if (functionId == 6) {
+                $("#mainGridContainer").html("")
+                    .load('/ProductWebPortal/Product/List', function () {
+                        $("#mainGridContainer").focus();
+                    });
+            }
+        }
+
+        var $mainGridRowSelected = function (row) {
+            var productId = row.ID;
+
+            $("#mainFormContainer").html("")
+                .load('/ProductWebPortal/Product/Detail/' + productId, function () {
+                    $("#mainFormContainer").focus();
+                });
+
+            //load tab bar ui layout
+            $("#mainOrderGridContainer").html("")
+                .load('/ProductWebPortal/Order/List', function () {
+                    $("#mainOrderGridContainer").focus();
+                });
+
+
+            $("#mainStockGridContainer").html("")
+                .load('/ProductWebPortal/Storage/List', function () {
+                    $("#mainStockGridContainer").focus();
+                });
+
+            $("#mainStockCheckGridContainer").html("")
+                .load('/ProductWebPortal/StorageCheck/List', function () {
+                    $("#mainStockCheckGridContainer").focus();
+                });
+        }
+
+    </script>
+</head>
+<body>
+	<div id="header" style="height:40px;">
+
+	</div>
+	<div class="colmask blogstyle">
+		<div class="colmid">
+		    <div class="colleft">
+                <div class="col1">
+                    <div id="testNavigateCuteTab" class="cutetabbar">
+                        <ul>
+                            <li class="current">
+                                <a href="#" rel="home">Home</a>
+                                <ul>
+                                    <li>
+                                        <div id="treeContainerProductSys" style="height:790px;"></div>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li>
+                                <a href="#" rel="insert">Insert</a>
+                                <ul>
+                                    <li>
+                                        <div id="treeContainerStockSys" style="height:790px;"></div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col2">
+                    <div id="mainGridContainer"></div>
+                </div>
+                <div class="col3">
+                    <div class="col31">
+                        <div id="testCuteTab" class="cutetabbar">
+                            <ul>
+                                <li class="current">
+
+                                    <a href="#" rel="home">Home</a>
+                                    <ul>
+                                        <li>
+                                            <div id="mainOrderGridContainer"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" rel="ProductForm">ProductDetail</a>
+                                    <ul>
+                                        <li>
+                                            <div id="mainFormContainer"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" rel="insert">Insert</a>
+                                    <ul>
+                                        <li>
+                                            <div id="mainStockGridContainer"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" rel="text gallary">Text gallary</a>
+                                    <ul>
+                                        <li>
+                                            <div id="mainStockCheckGridContainer"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col32">
+
+                        <div style="color:#f00; background:#808080">11111111111111111</div>
+                    </div>
+                </div>
+		    </div>
+		</div>
+	</div>
+	<div id="footer" style="height:20px;"></div>
+</body>
+</html>

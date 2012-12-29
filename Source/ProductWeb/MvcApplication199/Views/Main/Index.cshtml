@@ -1,0 +1,208 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Web Page</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: repeat-x scroll left top transparent;
+            font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+            font-size: 13px;
+            height: 800px;
+        }
+    </style>
+    <link rel="stylesheet" href="~/Content/layout/cute3columns.css" />
+    <link rel="stylesheet" href="~/Scripts/jstree/themes/classic/style.css" />
+    <link rel="stylesheet" href="/PlatJs/Scripts/cutelabeltab/Content/treetab.css" />
+    <link rel="stylesheet" href="/PlatJs/Scripts/cutelabeltab/Content/toptab.css" />
+    <link rel="stylesheet" href="/PlatJs/Scripts/cutelabeltab/Content/bottomtab.css" />
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jstree/jquery.jstree.js"></script>
+    <script type="text/javascript" src="/PlatJs/Scripts/cutelabeltab/cutemenutab.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            //各Tab页初始化
+            var treeTab = $("#treeSubShow_01");
+            var treeContDiv = $("#treeSSCont");
+            treeTab.initTabMenu(treeTab, treeContDiv);
+
+            var topTab = $("#topSubShow_01");
+            var topContDiv = $("#topSSCont");
+            topTab.initTabMenu(topTab, topContDiv);
+
+            var bottomTab = $("#bottomSubShow_01");
+            var bottomContDiv = $("#bottomSSCont");
+            bottomTab.initTabMenu(bottomTab, bottomContDiv);
+
+            //树控件加载
+            var myTree = $("#treeContainerProductSys").jstree({
+                "json_data": {
+                    "ajax": {
+                        "url": "/ProductSys.WebApi/api/FunctionMenu/GetJsTreeView",
+                        "type": "GET",
+                        "dataType": "json",
+                        "contentType": "application/json charset=utf-8",
+                        "success": function (data) {
+                            //alert(data);
+                        }
+                    }
+                },
+                "plugins": ["themes", "json_data", "ui"]
+            });
+
+            myTree.bind("select_node.jstree", function (event, data) {
+                var functionId = $('#treeContainerProductSys').jstree('get_selected').attr('id');
+                loadMainGridData(functionId);
+            });
+        })
+
+        function loadMainGridData(functionId) {
+            if (functionId == 6) {
+                $("#mainGridContainer").html("")
+                    .load('/ProductWebPortal/Product/List', function () {
+                        $("#mainGridContainer").focus();
+                    });
+            }
+        }
+
+        //选中行记录的Tab页数据加载
+        var $mainGridRowSelected = function (row) {
+            $("#topTabBar").show();
+            $("#bottomTabBar").show();
+
+            var productId = row.ID;
+
+            //product detail
+            $("#topContainerProductForm").html("")
+                .load('/ProductWebPortal/Product/Detail/' + productId, function () {
+                    $("#topContainerProductForm").focus();
+                });
+
+            //top order grid
+            $("#topContainerOrderList").html("")
+                .load('/ProductWebPortal/Order/List', function () {
+                    $("#topContainerOrderList").focus();
+                });
+
+            //storage grid
+            $("#bottomContainerStorageList").html("")
+                .load('/ProductWebPortal/Storage/List', function () {
+                    $("#bottomContainerStorageList").focus();
+                });
+
+            //storage check grid
+            $("#bottomContainerStorageCheckList").html("")
+                .load('/ProductWebPortal/StorageCheck/List', function () {
+                    $("#bottomContainerStorageCheckList").focus();
+                });
+        }
+       
+    </script>
+</head>
+<body>
+	<div id="header" style="height:40px;">
+
+	</div>
+	<div class="colmask blogstyle">
+		<div class="colmid">
+		    <div class="colleft">
+                <div class="col1">
+                    <div class="treeIn_right">
+                        <!--选项卡切换-->
+                        <div class="treeT_Menu_01" id="treeSubShow_01">
+                            <label class="selected" id="treeSSLabel_01_01">
+                                产品</label>
+                            <label id="treeSSLabel_01_02">
+                                库存
+                            </label>
+                        </div>       
+                        <!--选项卡切换 结束-->
+                        <div id="treeSSCont">
+                            <div id="treeSSCont_01_01" class="treeb_cont_01">
+                                <!--Home 内容区域-->
+                                <div class="treeb_con_01_wz" id="treeContainerProductSys" style="height:790px;">
+                                </div>
+                                <!--Home 内容区域 结束-->
+                            </div>
+                            <div id="treeSSCont_01_02" style="display: none;" class="treeb_cont_01" >
+                                <div class="treeb_con_01_wz" id="treeContainerStorageSys" style="height:790px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col2">
+                    <div id="mainGridContainer"></div>
+                </div>
+                <div class="col3">
+                    <div class="col31">
+                        <div class="topIn_right" id="topTabBar" style="display:none">
+                            <!--选项卡切换-->
+                            <div class="topT_Menu_01" id="topSubShow_01">
+                                <label class="selected" id="topSSLabel_01_01">
+                                    产品详细
+                                </label>
+                                <label id="topSSLabel_01_02">
+                                    订单基础数据
+                                </label>
+                            </div>       
+                            <!--选项卡切换 结束-->
+                            <div id="topSSCont">
+                                <div id="topSSCont_01_01" class="topb_cont_01" style="width:550px;height:800px;border:solid 1px;">
+                                    <!--Home 内容区域-->
+                                    <div class="topb_con_01_wz" id="topContainerProductForm" style="width:500px;height:290px;">
+                                    </div>
+                                     <div class="bottomIn_right" id="bottomTabBar">
+                                        <!--选项卡切换-->
+                                        <div class="bottomT_Menu_01" id="bottomSubShow_01">
+                                            <label class="selected" id="bottomSSLabel_01_02">
+                                                库存明细</label>
+                                            <label id="bottomSSLabel_01_03">
+                                                出入库明细
+                                            </label>
+                                        </div>       
+                                        <!--选项卡切换 结束-->
+                                        <div id="bottomSSCont">
+                                            <div id="bottomSSCont_01_01" class="bottomb_cont_01" style="height:490px;width:550px;">
+                                                <!--Home 内容区域-->
+                                                <div class="bottomb_con_01_wz" id="bottomContainerStorageList">
+                                                </div>
+                                                <!--Home 内容区域 结束-->
+                                            </div>
+                                            <div id="bottomSSCont_01_02" class="bottomb_cont_01" style="display: none;"  >
+                                                <div class="bottomb_con_01_wz" id="bottomContainerStorageCheckList" style="height:490px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Home 内容区域 结束-->
+                                </div>
+                                <div id="topSSCont_01_02" class="topb_cont_01" style="display:none;height:690px;">
+                                    <div class="topb_con_01_wz" id="topContainerOrderList" style="height:390px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col32">
+                       
+                    </div>
+		        </div>
+		    </div>
+	    </div>
+    </div>
+	<div id="footer" style="height:20px;"></div>
+</body>
+</html>

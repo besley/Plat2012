@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<script type="text/javascript" src="/ProductWebPortal/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/toolkit/ajaxHelper.js"></script>
+
+<div class="actions" >
+    <input type="button" id="btnStorageFormSave" class="btn primary" value="保存" onclick="onStorageFormSaveClick(); parent.jQuery.fancybox.close();" />
+    <input type="button" id="btnStorageFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="storageForm">
+    <fieldset  style="height:460px;">
+        <legend>新增/编辑产品</legend>
+        <input type="hidden" id="hdnStorageFormStorageId" value="@Model.ID" />
+        <div style="margin-left:5px;float:left" >
+            <label for="txtStorageFormProductId">产品ID</label>
+            <input type="text" id="txtStorageFormProductId" readonly="readonly" value="@Model.ProductId" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtStorageFormStorageAmount">库存数量</label>
+            <input type="text" id="txtStorageFormStorageAmount" value="@Model.StorageAmount" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtStorageFormLastUpdatedDate">日期</label>
+            <textarea id="txtStorageFormLastUpdatedDate" rows="3"  cols="40"> @Model.LastUpdatedDate</textarea>
+         </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    function onStorageFormSaveClick() {
+        var storageId = $("#hdnStorageFormStorageId").val();
+        var productIdStorage = $("#txtStorageFormProductId").val();
+        var storageAmount = $("#txtStorageFormStorageAmount").val();
+        var lastUpdatedDate = $("#txtStorageFormLastUpdatedDate").val();
+
+        var dataStorage = {
+            "ProductId": productIdStorage,
+            "StorageAmount": storageAmount,
+            "LastUpdatedDate": lastUpdatedDate
+        };
+
+        var opType = "@ViewData["STORAGE_ADD_OR_EDIT"]";
+        if (opType == "A") {
+            doHttpClientSave("/ProductSys.WebAPI/api/Storage/Create",
+                    JSON.stringify(dataStorage),
+                    function (result) {
+                        alert(result);
+                        window.location.href = "/ProductWebPortal/Product/List";
+                    });
+        }
+        else {
+            doHttpClientUpdate("/ProductSys.WebAPI/api/Storage/Update",
+                   JSON.stringify(dataStorage),
+                   function (result) {
+                       alert(result);
+
+                   });
+        }
+    }
+</script>
+
+ 
+

@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Web Page</title>
+    <style type="text/css">
+        /** {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: repeat-x scroll left top transparent;
+            font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+            font-size: 13px;
+            height: 800px;
+        }*/
+    </style>
+    <link rel="stylesheet" href="/PlatJs/Scripts/cutetabbar/css/cutetabbar.css" />
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.2.js"></script>
+    <script type="text/javascript" src="/PlatJs/Scripts/cutetabbar/cutetabbar.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#divCuteTopTab").cuteTabBarCtrl({
+                onSelectTab: function (e) {
+                    ;
+                }
+            });
+
+            //load tab bar ui layout
+            //$("#mainOrderGridContainer").html("")
+            //    .load('/ProductWebPortal/Order/List', function () {
+            //        $("#mainOrderGridContainer").focus();
+            //    });
+        })
+    </script>
+</head>
+<body>
+	<div id="divCuteTopTab" class="cutetabbar">
+        <ul>
+            <li class="current">
+                <a href="#" rel="home">Home</a>
+                <ul>
+                    <li>
+@*                        <div id="mainOrderGridContainer"></div>*@
+                        <div>d;asjfkdsafkdsajfiods;aihfosahfdiosaho</div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" rel="ProductForm">ProductDetail</a>
+                <ul>
+                    <li>
+                        <div id="mainFormContainer"></div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" rel="insert">Insert</a>
+                <ul>
+                    <li>
+                        <div id="mainStockGridContainer"></div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" rel="text gallary">Text gallary</a>
+                <ul>
+                    <li>
+                        <div id="mainStockCheckGridContainer"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

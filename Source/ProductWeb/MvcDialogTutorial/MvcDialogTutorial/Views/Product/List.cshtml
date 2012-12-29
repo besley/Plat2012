@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@model IList<MvcDialogTutorial.Models.Product>
+<ul class="ProductList">
+    @foreach (var p in Model)
+    {
+        <li>
+            @p.ProductId<br />
+            @p.ProductName<br />
+            @p.Notes<br />
+            <span class="EditLink ButtonLink" productid="@p.ProductId">Edit</span>
+        </li>
+    }
+</ul>
+
+
+@*
+@model IEnumerable<Website.Models.Note>
+<ul class="NotesList">
+    @foreach (var note in Model)
+    {
+    <li>
+        @note.Title <br />
+        @note.Body <br />
+        <span class="EditLink ButtonLink" noteid="@note.Id">Edit</span>
+    </li>
+    }
+</ul>*@

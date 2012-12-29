@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link href="/MvcDialogTutorial/Content/themes/base/jquery.ui.all.css" rel="Stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="~/Scripts/slickgrid/lib/jquery-1.7.min.js"></script>
+    <script src="/MvcDialogTutorial/Scripts/jquery-ui-1.8.13.min.js"></script>
+</head>
+<body>
+    @RenderBody()
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Order List";
+    Layout = "~/Views/Shared/_listLayout.cshtml";
+}
+
+  <style>
+    .cell-title {
+      font-weight: bold;
+    }
+
+    .cell-effort-driven {
+      text-align: center;
+    }
+    .cell-selection {
+      border-right-color: silver;
+      border-right-style: solid;
+      background: #f5f5f5;
+      color: gray;
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .slick-row.selected .cell-selection {
+      background-color: transparent; /* show default selected row background */
+    }
+  </style>
+
+<link rel="stylesheet" href="/PlatJs/Scripts/cutetoolbar/css/cutetoolbar.css" />
+<link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox.css" />
+<link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox-buttons.css" />
+
+<script type="text/javascript" src="/PlatJS/Scripts/cutetoolbar/cutetoolbar.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox-buttons.js"></script>
+
+<script type="text/javascript" src="~/Javascript/orderList.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#orderCuteToolBar").cuteToolBarCtrl({
+            defaultCRUDButtons: true,
+            defaultPrefixName: "prefixOrderToolbar",
+            //onSelectButton: function (e) {
+            //    ;//alert("button selected");
+            //}
+        });
+
+        $("#orderCuteToolBar").cuteToolBarBind("search", onOrderListSearchClick);
+        $("#orderCuteToolBar").cuteToolBarBind("add", pwpOrderList.onAddClick);
+        $("#orderCuteToolBar").cuteToolBarBind("edit", pwpOrderList.onEditClick);
+        $("#orderCuteToolBar").cuteToolBarBind("delete", pwpOrderList.onDeleteClick);
+        $("#orderCuteToolBar").cuteToolBarBind("save", pwpOrderList.onSaveClick);
+
+        function onOrderListSearchClick() {
+            alert("search...");
+        }
+
+        //订单表单对话框
+        $("#orderFormFancybox").fancybox({
+            maxWidth: 600,
+            maxHeight: 400,
+            fitToView: false,
+            width: '70%',
+            height: '70%',
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
+    });
+
+    function onOrderListPrintClick() {
+        var url = "/ProductWebPortal/Order/Create";
+
+        $("#orderFormFancybox").attr("href", url);
+        $("#orderFormFancybox").click();
+    }
+</script>
+
+<div id="orderListContainer" style="position:relative">
+     <div style="width:600px;">
+        <div id="orderCuteToolBar" class="cutetoolbar">
+            <ul>
+                <li>
+                   <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/print.png" alt="" onclick="onOrderListPrintClick();" />打印</a>
+                </li>
+                <li>
+                    <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/Excel.png" alt="" />Excel</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid-header">
+        <label>采购订单列表</label>
+        <span style="float:right" class="ui-icon ui-icon-search" title="Toggle search panel"></span>
+    </div>
+    <div id="myGridOrder" style="width:595px;height:400px;border:gray solid 1px;"></div>
+    <div id="myPagerOrder"></div>
+</div>
+
+<a id="orderFormFancybox" data-fancybox-type="iframe" style="display:none;" class="orderFormFancybox"></a>
+
+

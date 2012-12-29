@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Fancybox</title>
+    <link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox.css" />
+    <link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox-buttons.css" />
+
+    <script type="text/javascript" src="/PlatJS/Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox-buttons.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //产品表单对话框
+            //$("#productFormFancybox").fancybox({
+            //    maxWidth: 600,
+            //    maxHeight: 400,
+            //    fitToView: false,
+            //    width: '70%',
+            //    height: '70%',
+            //    autoSize: false,
+            //    closeClick: false,
+            //    openEffect: 'none',
+            //    closeEffect: 'none',
+            //    beforeShow: function () {
+            //        // get the value of pageload INSIDE the iframe
+            //        //pageload = $('.fancybox-iframe').contents().find('#pageload').val();
+            //        alert("befor show");
+            //    }
+            //});
+
+            //产品查询表单
+            $("#productQueryFancybox").fancybox({
+                maxWidth: 600,
+                maxHeight: 400,
+                fitToView: false,
+                width: '70%',
+                height: '70%',
+                autoSize: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none',
+                beforeShow: function () {
+                    // get the value of pageload INSIDE the iframe
+                    //pageload = $('.fancybox-iframe').contents().find('#pageload').val();
+                    alert("befor show");
+                }
+                //,
+                //beforeClose: function () {
+                //    //if (pageload != 0) {
+                //    //    $('#' + pageload).slideUp('slow');
+                //    //} else {
+                //    //    window.location.reload(true);
+                //    //}
+                //    var productTypeId = $("#productQueryFancybox").contents().find("#txtProductTypeId").val();
+                //    alter(productTypeId);
+                //}
+            });
+        });
+
+        function onQueryClick() {
+            var url = "/ProductWebPortal/Order/Create";
+
+            $("#productFormFancybox").attr("href", url);
+            $("#productFormFancybox").click();
+        }
+
+        function onFormClick() {
+            var url = "/ProductWebPortal/Product/Create";
+
+            $("#productFormFancybox").attr("href", url);
+            $("#productFormFancybox").click();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" id="btnQuery" value="Query" onclick="onQueryClick();" />
+        <input type="button" id="btnForm" value="Form" onclick="onFormClick();" />
+        <a id="productQueryFancybox" data-fancybox-type="iframe"></a>
+@*        <a id="productFormFancybox" data-fancybox-type="iframe"></a>*@
+    </div>
+</body>
+</html>

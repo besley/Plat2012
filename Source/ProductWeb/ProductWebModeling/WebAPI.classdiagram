@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="34d10890-97a9-4f6a-82e1-2803ba0ec056" name="WebAPI" linkedPackageId="0ddeff6e-0d27-4969-9c01-11778b32d3d9" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="7e6dec4d-50ff-4fc4-8d80-0336e107613a">
+      <profileInstance Id="5eba63f8-bc76-4fec-9709-421c13da7817" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="c576c47a-b39e-4b5f-8d69-95a673c902c0">
+      <profileInstance Id="e8d8c358-1ee8-4a89-a353-10cb7d9f84e3" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d5eb4e43-b654-423e-b7a6-08382a0b3ead" name="OrderController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dd08bc9a-a595-4cc0-8679-b43f612607b5" />
+        <suppliersInternal>
+          <dependency Id="db8fb5a6-40e2-4c61-9054-f5bbe3aeb946">
+            <interfaceMoniker Id="bbff5a42-104f-4f4c-8f42-94ef47bc39d6" LastKnownName="IOrderService" />
+            <elementDefinition Id="d4e20ba1-145a-4ac5-b820-09da391f8b09" />
+          </dependency>
+          <dependency Id="05b41214-d0a3-4cad-867a-06d7056f0d05">
+            <classMoniker Id="ba62e692-c2e6-4485-978b-9c45f53a121c" LastKnownName="ServiceManager" />
+            <elementDefinition Id="f7466f5a-247f-4b91-a601-ad7fa59587a1" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="defe0fbb-3516-4aed-8cf4-a8af2f522954" isSubstitutable="false">
+            <classMoniker Id="7f2fbe8d-2479-4510-9af4-3cd728ce3124" LastKnownName="ApiControllerBase" />
+            <elementDefinition Id="6bfd245d-1944-42ce-8b73-c21f0b4e729f" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7f2fbe8d-2479-4510-9af4-3cd728ce3124" name="ApiControllerBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6d18f8ea-9fd7-4ca2-8670-e4c96c803323" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="bbff5a42-104f-4f4c-8f42-94ef47bc39d6" name="IOrderService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9fed8f42-8315-4495-9758-e52dd6d53b27" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ba62e692-c2e6-4485-978b-9c45f53a121c" name="ServiceManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a100aff0-9696-465e-8e0a-18002dfd8073" />
+        <ownedOperationsInternal>
+          <operation Id="98b5a2ff-ec5a-40ce-988b-f5b6a6542cc5" name="T CreateService" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fadd1e40-a854-463d-9ae7-337fdf0b4e69" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e07be081-953c-4158-a704-3a88b6870783" name="string serviceName" direction="In" isUnique="false">
+                  <elementDefinition Id="60599049-4c9f-416e-9ce1-86b4901a809b" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="0ddeff6e-0d27-4969-9c01-11778b32d3d9" name="ProductWebModeling">
+    <elementDefinition Id="643f31ec-e26f-4cfc-b99e-e7f1e448a12b" />
+  </package>
+</logicalClassDesignerModel>

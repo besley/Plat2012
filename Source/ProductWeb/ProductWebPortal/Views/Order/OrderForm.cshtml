@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<script type="text/javascript" src="/ProductWebPortal/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/toolkit/ajaxHelper.js"></script>
+
+<div id="orderForm">
+<fieldset>
+    <legend>新增/编辑订单</legend>
+        <div style="margin-left:5px;float:left" >
+            <label for="txtOrderFormOrderId">订单ID</label>
+            <input type="text" id="txtOrderFormOrderId" readonly="readonly" value="@Model.ID" />
+         </div>
+         <div style="margin-left:5px;float:left" >
+            <label for="txtOrderFormProductId">产品ID</label>
+            <input type="text" id="txtOrderFormProductId" readonly="readonly" value="@Model.ProductId" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtOrderFormProductName">产品名称</label>
+            <input type="text" id="txtOrderFormProductName" value="@Model.ProductName" />
+         </div>
+        <div style="margin-left:5px;float:left">
+            <label for="txtOrderFormBuyAmount">购买数量</label>
+            <input type="text" id="txtOrderFormBuyAmount" value="@Model.BuyAmount" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtOrderFormBuyPerson">购买人</label>
+            <input type="text" id="txtOrderFormBuyPerson" value="@Model.BuyPerson" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtOrderFormBuyDate">购买日期</label>
+            <input type="text" id="txtOrderFormBuyDate" value="@Model.BuyDate" />
+         </div>
+         <div style="margin-left:5px;">
+            <label for="txtOrderFormIsArrivaled">是否到货</label>
+            <input type="text" id="txtOrderFormIsArrivaled" value="@Model.IsArrivaled" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtOrderFormArrivaledDate">到货日期</label>
+            <input type="text" id="txtOrderFormArrivaledDate" value="@Model.ArrivaledDate" />
+         </div>
+         <div style="margin-left:5px;float:none">
+            <label for="txtOrderFormNotes">备注</label>
+            <textarea id="txtOrderFormNotes" rows="3"  cols="40"> @Model.Notes</textarea>
+         </div>
+        <div style="margin-left:5px;" class="actions" >
+            <input type="button" class="btn primary" id="btnOrderFormSave" value="保存" onclick="onOrderFormSaveClick(); parent.jQuery.fancybox.close();" />
+            <input type="button" class="btn"  id="btnOrderFormClose" value="关闭"  onclick="parent.jQuery.fancybox.close();" />
+        </div>
+</fieldset>
+</div>
+<script>
+    function onOrderFormSaveClick() {
+        var orderId = $("#txtOrderFormOrderId").val();
+        var productId = $("#txtOrderFormProductId").val();
+        var productName = $("#txtOrderFormProductName").val();
+        var buyAmount = $("#txtOrderFormBuyAmount").val();
+        var buyDate = $("#txtOrderFormBuyDate").val();
+        var buyPerson = $("#txtOrderFormBuyPerson").val();
+        var isArrivaled = $("#txtOrderFormIsArrivaled").val();
+        var arrivaledDate = $("#txtOrderFormArrivaledDate").val();
+        var notes = $("#txtNotes").val();
+        var dataOrder = {
+            "ID": orderId,
+            "ProductId": productId,
+            "ProductName": productName,
+            "BuyAmount": buyAmount,
+            "BuyDate": buyDate,
+            "BuyPerson": buyPerson,
+            "IsArrivaled": isArrivaled,
+            "ArrivaledDate": arrivaledDate,
+            "Notes": notes
+        };
+
+        var opType = "@ViewData["CRUD_ORDER"]";
+        if (opType == "C") {
+            doHttpClientSave("/ProductSys.WebAPI/api/OrderView/Create",
+                    JSON.stringify(dataOrder),
+                    function (result) {
+                        alert(result);
+                        window.location.href = "/ProductWebPortal/OrderView/List";
+                    });
+        }
+        else {
+            doHttpClientUpdate("/ProductSys.WebAPI/api/OrderView/Update",
+                   JSON.stringify(dataOrder),
+                   function (result) {
+                       alert(result);
+
+                   });
+        }
+    }
+</script>

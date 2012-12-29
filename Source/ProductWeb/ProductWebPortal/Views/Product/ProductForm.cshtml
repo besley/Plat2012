@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script type="text/javascript" src="/ProductWebPortal/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/toolkit/ajaxHelper.js"></script>
+
+<div class="actions" >
+    <input type="button" id="btnProductFormSave" class="btn primary" value="保存" onclick="onProductFormSaveClick(); parent.jQuery.fancybox.close();" />
+    <input type="button" id="btnProductFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="productForm">
+    <fieldset  style="height:260px;">
+        <legend>新增/编辑产品</legend>
+        <div style="margin-left:5px;float:left" >
+            <label for="txtProductFormProductId">产品ID</label>
+            <input type="text" id="txtProductFormProductId" readonly="readonly" value="@Model.ID" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtProductFormProductName">产品名称</label>
+            <input type="text" id="txtProductFormProductName" value="@Model.ProductName" />
+         </div>
+        <div style="margin-left:5px;float:left">
+            <label for="txtProductFormProductType">产品类型</label>
+            <input type="text" id="txtProductFormProductType" value="@Model.ProductType" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtProductFormUnitPrice">单价</label>
+            <input type="text" id="txtProductFormUnitPrice" value="@Model.UnitPrice" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtProductFormNotes">备注</label>
+            <textarea id="txtProductFormNotes" rows="3"  cols="40"> @Model.Notes</textarea>
+         </div>
+    </fieldset>
+</div>
+ 
+<script type="text/javascript">
+    function onProductFormSaveClick() {
+        var productId = $("#txtProductFormProductId").val();
+        var productName = $("#txtProductFormProductName").val();
+        var productType = $("#txtProductFormProductType").val();
+        var unitPrice = $("#txtProductFormUnitPrice").val();
+        var notes = $("#txtProductFormNotes").val();
+        var dataProduct = {
+            "ID": productId,
+            "ProductName": productName,
+            "ProductType": productType,
+            "UnitPrice": unitPrice,
+            "Notes": notes
+        };
+
+        var opType = "@ViewData["PRODUCT_ADD_OR_EDIT"]";
+        if (opType == "A") {
+            doHttpClientSave("/ProductSys.WebAPI/api/Product/Create",
+                    JSON.stringify(dataProduct),
+                    function (result) {
+                        alert(result);
+                        window.location.href = "/ProductWebPortal/Product/List";
+                    });
+        }
+        else {
+            doHttpClientUpdate("/ProductSys.WebAPI/api/Product/Update",
+                   JSON.stringify(dataProduct),
+                   function (result) {
+                       alert(result);
+
+                   });
+        }
+
+    }
+</script>

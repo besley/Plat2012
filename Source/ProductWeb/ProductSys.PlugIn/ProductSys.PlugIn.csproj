@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2706E835-982E-47EA-B545-34966FBCD37A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProductSys.PlugIn</RootNamespace>
+    <AssemblyName>ProductSys.PlugIn</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\..\PlatFramework\Library\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>..\..\..\PlatFramework\Library\DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\PlatFramework\Library\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\RoleService.cs" />
+    <Compile Include="Service\StorageCheckService.cs" />
+    <Compile Include="Service\StorageService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\PlatFramework\Plat.DataRepository\Plat.DataRepository.csproj">
+      <Project>{069ec405-4781-4f95-8201-2820723abdab}</Project>
+      <Name>Plat.DataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\PlatFramework\Plat.ServiceBuilder\Plat.ServiceBuilder.csproj">
+      <Project>{2cbbc90a-b6ff-48d9-b59d-e4284c8b17c4}</Project>
+      <Name>Plat.ServiceBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\TR.Datasource\TR.Datasource.csproj">
+      <Project>{a1ca8bd6-0ce5-4f17-825c-fd16197212da}</Project>
+      <Name>TR.Datasource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.BizEntity\ProductSys.BizEntity.csproj">
+      <Project>{10b0c2c2-1477-45b5-8ee6-f82fff03340e}</Project>
+      <Name>ProductSys.BizEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.DAL\ProductSys.DAL.csproj">
+      <Project>{8b0791c1-7766-43dc-9be4-2edfeda14690}</Project>
+      <Name>ProductSys.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.Interface\ProductSys.Interface.csproj">
+      <Project>{988a3b43-1193-436a-b4f0-d844506b736f}</Project>
+      <Name>ProductSys.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

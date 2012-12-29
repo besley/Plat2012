@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "StorageList";
+    Layout = "~/Views/Shared/_listLayout.cshtml";
+}
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .cell-title {
+        font-weight: bold;
+    }
+
+    .cell-effort-driven {
+        text-align: center;
+    }
+    .cell-selection {
+        border-right-color: silver;
+        border-right-style: solid;
+        background: #f5f5f5;
+        color: gray;
+        text-align: right;
+        font-size: 10px;
+    }
+    .slick-row.selected .cell-selection {
+        background-color: transparent; /* show default selected row background */
+    }
+</style>
+<link rel="stylesheet" href="/PlatJs/Scripts/cutetoolbar/css/cutetoolbar.css" />
+<link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox.css" />
+<link rel="stylesheet" href="/PlatJS/Content/jquery.fancybox-buttons.css" />
+
+<script type="text/javascript" src="~/Javascript/StorageList.js"></script> 
+<script type="text/javascript" src="/PlatJS/Scripts/cutetoolbar/cutetoolbar.js"></script>
+
+<script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#storageCuteToolBar").cuteToolBarCtrl({
+            defaultCRUDButtons: true,
+            defaultPrefixName: "prefixStorageToolBar",
+            //onSelectButton: function (e) {
+            //    ;
+            //}
+        });
+
+        $("#storageCuteToolBar").cuteToolBarBind("search", onStorageListSearchClick);
+        $("#storageCuteToolBar").cuteToolBarBind("add", pwpStorageList.onAddClick);
+        $("#storageCuteToolBar").cuteToolBarBind("edit", pwpStorageList.onEditClick);
+        $("#storageCuteToolBar").cuteToolBarBind("delete", pwpStorageList.onDeleteClick);
+        $("#storageCuteToolBar").cuteToolBarBind("save", pwpStorageList.onSaveClick);
+
+        $("#storageFormFancybox").fancybox({
+            maxWidth: 600,
+            maxHeight: 400,
+            fitToView: false,
+            width: '70%',
+            height: '70%',
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
+
+        function onStorageListSearchClick() {
+            alert("search Storage");
+        }
+    });
+</script>
+
+<div id="storageListContainer" style="position:relative;">
+     <div style="width:600px;">
+        <div id="storageCuteToolBar" class="cutetoolbar">
+            <ul>
+                <li>
+                   <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/print.png" alt="" />打印</a>
+                </li>
+                <li>
+                    <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/Excel.png" alt="" />Excel</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid-header" style="width:360px;">
+      <label>库存列表</label>
+    </div>
+    <div id="myGridStorage"  style="width:360px;height:500px;border:gray solid 1px;overflow-y:auto;"></div>
+    <div id="myPagerStorage" style="width:360px;"></div>
+</div>
+
+<a id="storageFormFancybox" data-fancybox-type="iframe" style="display:none"></a>

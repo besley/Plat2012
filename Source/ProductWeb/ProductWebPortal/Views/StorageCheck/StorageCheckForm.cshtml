@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<script type="text/javascript" src="/ProductWebPortal/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="/PlatJS/Scripts/toolkit/ajaxHelper.js"></script>
+<div class="actions" >
+    <input type="button" id="btnStorageCheckFormSave" class="btn primary" value="保存" onclick="onStorageCheckFormSaveClick(); parent.jQuery.fancybox.close();" />
+    <input type="button" id="btnStorageCheckFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="storageCheckForm">
+    <fieldset  style="height:460px;">
+        <legend>新增/编辑产品</legend>
+        <input type="hidden" id="hdnStorageCheckFormStorageCheckId" value="@Model.ID" />
+        <div style="margin-left:5px;float:left" >
+            <label for="txtStorageCheckFormProductId">产品ID</label>
+            <input type="text" id="txtStorageCheckFormProductId" readonly="readonly" value="@Model.ProductId" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtStorageCheckFormCheckAmount">出入库数量</label>
+            <input type="text" id="txtStorageCheckFormCheckAmount" value="@Model.CheckAmount" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtStorageCheckFormCheckPerson">操作人</label>
+            <input id="txtStorageCheckFormCheckPerson" value="@Model.CheckPerson" />
+         </div>
+         <div style="margin-left:5px;float:none">
+            <label for="txtStorageCheckFormCheckDatetime">操作人</label>
+            <input id="txtStorageCheckFormCheckDatetime" value="@Model.CheckDatetime" />
+         </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    function onStorageCheckFormSaveClick() {
+        var storageCheckId = $("#hdnStorageCheckFormStorageCheckId").val();
+        var productId = $("#txtStorageCheckFormProductId").val();
+        var checkAmount = $("#txtStorageCheckFormCheckAmount").val();
+        var checkPerson = $("#txtStorageCheckFormCheckPerson").val();
+        var checkDatetime = $("#txtStorageCheckFormCheckDatetime").val();
+
+        var dataStorageCheck = {
+            "ID": storageCheckId,
+            "ProductId": productId,
+            "CheckAmount": checkAmount,
+            "CheckPerson": checkPerson,
+            "CheckDatetime": checkDatetime
+        };
+
+        var opType = "@ViewData["STORAGECHECK_ADD_OR_EDIT"]";
+        if (opType == "A") {
+            doHttpClientSave("/ProductSys.WebAPI/api/StorageCheck/Create",
+                    JSON.stringify(dataStorageCheck),
+                    function (result) {
+                        alert(result);
+                        window.location.href = "/ProductWebPortal/StorageCheck/List";
+                    });
+        }
+        else {
+            doHttpClientUpdate("/ProductSys.WebAPI/api/StorageCheck/Update",
+                   JSON.stringify(dataStorageCheck),
+                   function (result) {
+                       alert(result);
+
+                   });
+        }
+    }
+</script>
+
+ 
+

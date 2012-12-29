@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+
+   
+    @Scripts.Render(" ~/bundles/jquery")
+    <script type="text/javascript" src="~/Scripts/jquery.colorbox.js"></script>
+
+@*    @Scripts.Render("~/bundles/bootstrap")*@
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

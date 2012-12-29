@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "PaperForm";
+    Layout = "~/Views/Shared/_bootstrapLayout.cshtml";
+}
+
+<h2>PaperForm</h2>
+
+<script type="text/javascript">
+    $(function () {
+        $("#formContainer").draggable();
+        $(".inline").colorbox({iframe:true, width:"100%", height:"100%"});
+})
+</script>
+
+@*<p><a class='inline' href="#inline_content">Inline HTML</a></p>*@
+<div id="formContainer"><a class='inline' href="/MvcApplication199/Product/BookForm">open pop window</a></div>
+<div style='display:none'>
+<div id='inline_content' style='padding:10px; background:#fff;'>
+<p><strong>This content comes from a hidden element on this page.</strong></p>
+<p>The inline option preserves bound JavaScript events and changes, and it puts the content back where it came from when it is closed.</p>
+</div>
+</div>
+

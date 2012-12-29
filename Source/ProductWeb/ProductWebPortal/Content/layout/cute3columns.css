@@ -1,0 +1,85 @@
+﻿ body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	background: #fff;
+	min-width: 700px;
+	font-size: 90%;
+}
+
+#header {
+	clear: both;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #000;
+}
+
+.colmask{
+	position: relative;
+	clear: both;
+	float: left;
+	width: 100%;
+	overflow: hidden;
+}
+
+.colright,
+.colmid,
+.colleft{
+	float: left;
+	width: 100%;
+	position: relative;
+    background: #fff;
+}
+
+.col1,
+.col2,
+.col3{
+	float: left;
+	position: relative;
+	padding: 0 0 1em 0;
+	overflow: hidden;
+}
+
+.col31 .clo32
+{
+    float:right;
+    position: relative;
+    overflow: hidden;
+}
+
+.blogstyle {
+	background: #fff;
+}
+
+.blogstyle .colmid{
+	right: 10%;
+	background: #f4f4f4;
+}
+
+.blogstyle .colleft{
+	left: 5%;
+	background: #fff;
+}
+
+.blogstyle .col1{
+    left: 5%;
+	width: 16%;
+}
+
+.blogstyle .col2{
+    left: 5%;
+	width: 29%;
+}
+
+.blogstyle .col3{
+    left: 7%;
+	width: 44%;
+}
+
+#footer{
+	clear: both;
+	float: left;
+	width: 100%;
+	border-top: 1px solid #000;
+}

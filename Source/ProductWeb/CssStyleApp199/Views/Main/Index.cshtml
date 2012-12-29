@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>选项卡切换</title>
+    <link href="/PlatJs/Scripts/cutetabbar/css/jiaodian.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="/PlatJs/Scripts/cutetabbar/jiaodian.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var SubShow_01 = new SubShowClass("SubShow_01", "onmouseover", 0);
+        SubShow_01.addLabel("SSLabel_01_01", "SSCont_01_01");
+        SubShow_01.addLabel("SSLabel_01_02", "SSCont_01_02");
+        SubShow_01.addLabel("SSLabel_01_03", "SSCont_01_03");
+        SubShow_01.addLabel("SSLabel_01_04", "SSCont_01_04");
+    </script>
+</head>
+<body>
+    <div class="in_right">
+        <!--选项卡切换-->
+          <div class="T_Menu_01" id="SubShow_01">
+            <label class="selected" id="SSLabel_01_01">Home</label>
+            <label id="SSLabel_01_02">ProductDetail</label>
+            <label id="SSLabel_01_03">Insert </label>
+            <label id="SSLabel_01_04">Text gallary </label>
+          </div>
+        <!--选项卡切换 结束-->
+          <div id="SSCont_01_01" class="b_cont_01">
+              <!--Home 内容区域--> 
+              <div class="b_con_01_wz">
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+             </div>    
+             <!--Home 内容区域 结束-->
+          </div>
+
+          <div id="SSCont_01_02" style="display: none;" class="b_cont_01">
+            <div class="b_con_01_wz">22222222222222222222222222222</div>
+          </div>
+
+          <div id="SSCont_01_03" style="display: none;" class="b_cont_01">
+            <div class="b_con_01_wz">333333333333333333333333333</div>
+          </div>
+
+          <div id="SSCont_01_04" style="display: none;" class="b_cont_01">
+            <div class="b_con_01_wz">44444444444444444444444444</div>
+          </div>
+    </div>
+</body>
+</html>
