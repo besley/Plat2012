@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_LayoutOfList.cshtml";
+}
+
+<div id="jstreeContainer">      
+</div>
+
+<div id="productCuteToolBar" class="cutetoolbar">
+    <ul>
+        <li>
+            <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/print.png" alt="" onclick="onProductListPrintClick();" />打印</a>
+        </li>
+        <li>
+            <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/Excel.png" alt="" />Excel</a>
+        </li>
+    </ul>
+</div>
+
+<div class="grid-header">
+    <label>产品列表</label>
+    <span style="float:right" class="ui-icon ui-icon-search" title="Toggle search panel" onclick="toggleFilterRow()"></span>
+</div>
+
+<div id="myGridProduct"  style="width:360px;height:700px;border:gray solid 1px;overflow-y:auto;"></div>
+<div id="myPagerProduct"></div>
+<input id="hdnShowOrderListByProductId" type="hidden" value="" />
+<a id="productQueryFancybox" data-fancybox-type="iframe" class="productQueryFancybox"></a>
+<a id="productFormFancybox" data-fancybox-type="iframe" class="productFormFancybox"></a>
+
+<input id="hdnQueryProductName" type="hidden" />
+<input id="hdnQueryProductTypeId" type="hidden" />
+
+@Html.Partial("../Shared/_RequireSetupOfList")

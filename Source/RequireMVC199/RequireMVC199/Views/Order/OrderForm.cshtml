@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<div style="margin-left:5px;" class="actions" >
+    <input type="button" class="btn primary" id="btnOrderFormSave" value="保存" />
+    <input type="button" class="btn"  id="btnOrderFormClose" value="关闭"  onclick="parent.jQuery.fancybox.close();" />
+</div>
+<div id="orderForm">
+    <input type="hidden" id="hdnOrderFormOpType" value="" />
+    <fieldset>
+        <legend>新增/编辑订单</legend>
+            <div style="margin-left:5px;float:left" >
+                <label for="txtOrderFormOrderId">订单ID</label>
+                <input type="text" id="txtOrderFormOrderId" readonly="readonly" value="@Model.ID" />
+             </div>
+             <div style="margin-left:5px;float:left" >
+                <label for="txtOrderFormProductId">产品ID</label>
+                <input type="text" id="txtOrderFormProductId" readonly="readonly" value="@Model.ProductId" />
+             </div>
+            <div style="margin-left:5px;">
+                <label for="txtOrderFormProductName">产品名称</label>
+                <input type="text" id="txtOrderFormProductName" value="@Model.ProductName" />
+             </div>
+            <div style="margin-left:5px;float:left">
+                <label for="txtOrderFormBuyAmount">购买数量</label>
+                <input type="text" id="txtOrderFormBuyAmount" value="@Model.BuyAmount" />
+             </div>
+            <div style="margin-left:5px;">
+                <label for="txtOrderFormBuyPerson">购买人</label>
+                <input type="text" id="txtOrderFormBuyPerson" value="@Model.BuyPerson" />
+             </div>
+            <div style="margin-left:5px;float:none">
+                <label for="txtOrderFormBuyDate">购买日期</label>
+                <input type="text" id="txtOrderFormBuyDate" value="@Model.BuyDate" />
+             </div>
+             <div style="margin-left:5px;">
+                <label for="txtOrderFormIsArrivaled">是否到货</label>
+                <input type="text" id="txtOrderFormIsArrivaled" value="@Model.IsArrivaled" />
+             </div>
+            <div style="margin-left:5px;float:none">
+                <label for="txtOrderFormArrivaledDate">到货日期</label>
+                <input type="text" id="txtOrderFormArrivaledDate" value="@Model.ArrivaledDate" />
+             </div>
+             <div style="margin-left:5px;float:none">
+                <label for="txtOrderFormNotes">备注</label>
+                <textarea id="txtOrderFormNotes" rows="3"  cols="40"> @Model.Notes</textarea>
+             </div>
+    </fieldset>
+</div>
+
+@Html.Partial("../Shared/_RequireSetupOfForm")
+
+@*<script type="text/javascript">
+    require(['jquery'], function () {
+        var opType = "@ViewData["ORDER_ADD_OR_EDIT"]";
+        $("#hdnOrderFormOpType").val(opType);
+    });
+</script>*@

@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<div class="actions" >
+    <input type="button" id="btnStorageFormSave" class="btn primary" value="保存"/>
+    <input type="button" id="btnStorageFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="storageForm">
+    <input type="hidden" id="hdnStorageFormOpType" value="" />
+    <fieldset  style="height:460px;">
+        <legend>新增/编辑产品</legend>
+        <input type="hidden" id="hdnStorageFormStorageId" value="@Model.ID" />
+        <div style="margin-left:5px;float:left" >
+            <label for="txtStorageFormProductId">产品ID</label>
+            <input type="text" id="txtStorageFormProductId" readonly="readonly" value="@Model.ProductId" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtStorageFormStorageAmount">库存数量</label>
+            <input type="text" id="txtStorageFormStorageAmount" value="@Model.StorageAmount" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtStorageFormLastUpdatedDate">日期</label>
+            <textarea id="txtStorageFormLastUpdatedDate" rows="3"  cols="40"> @Model.LastUpdatedDate</textarea>
+         </div>
+    </fieldset>
+</div>
+
+@Html.Partial("../Shared/_RequireSetupOfForm")
+
+<script type="text/javascript">
+    require(['jquery'], function () {
+        var opType = "@ViewData["STORAGE_ADD_OR_EDIT"]";
+        $("#hdnStorageFormOpType").val(opType);
+    });
+</script>
+

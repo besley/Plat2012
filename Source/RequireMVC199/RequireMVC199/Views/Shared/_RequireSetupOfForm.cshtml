@@ -1,0 +1,24 @@
+﻿
+@using RequireMVC199.RequireJS
+@{
+    var entryCommonJS = Html.RequireCommonJsOfWeb("Form");  
+    var entryPointPath = Html.RequireJsPagePoint();
+    
+    if (entryPointPath != null)
+    {
+        <script type="text/javascript">
+@*            var requireConfig = {
+                pageOptions: '@ViewBag.PageOptions',
+                websiteOptions: '@ViewBag.WebsiteOptions'
+            };
+
+            require.config({
+                locale: '@Html.CurrentCulture()',
+                baseUrl: '@Url.Content("~/ViewJS")',
+                paths: @Html.GetRequireJsPathsOfPage("Form"),
+                shim: @Html.GetRequireJsShimOfPage("Form")
+            });*@
+
+        </script>
+    }
+}

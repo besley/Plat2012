@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<div class="actions" >
+    <input type="button" id="btnProductFormSave" class="btn primary" value="保存" />
+    <input type="button" id="btnProductFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="productForm">
+    <input type="hidden" id="hdnProductFormOpType" value="" />
+    <fieldset  style="height:260px;">
+        <legend>新增/编辑产品</legend>
+        <div style="margin-left:5px;float:left" >
+            <label for="txtProductFormProductId">产品ID</label>
+            <input type="text" id="txtProductFormProductId" readonly="readonly" value="@Model.ID" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtProductFormProductName">产品名称</label>
+            <input type="text" id="txtProductFormProductName" value="@Model.ProductName" />
+         </div>
+        <div style="margin-left:5px;float:left">
+            <label for="txtProductFormProductType">产品类型</label>
+            <input type="text" id="txtProductFormProductType" value="@Model.ProductType" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtProductFormUnitPrice">单价</label>
+            <input type="text" id="txtProductFormUnitPrice" value="@Model.UnitPrice" />
+        </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtProductFormNotes">备注</label>
+            <textarea id="txtProductFormNotes" rows="3"  cols="40"> @Model.Notes</textarea>
+         </div>
+    </fieldset>
+</div>
+
+@Html.Partial("../Shared/_RequireSetupOfForm")
+

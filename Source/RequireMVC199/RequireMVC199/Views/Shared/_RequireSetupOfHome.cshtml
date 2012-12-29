@@ -1,0 +1,28 @@
+﻿
+@using RequireMVC199.RequireJS
+@{
+    
+    
+    var entryCommonJS = Html.RequireCommonJsOfWeb("Home");
+    var pagePointPath = Html.RequireJsPagePoint();
+    
+
+    <script data-main="" src="@Url.Content("~/Scripts/require.js")"></script>
+    
+    if (pagePointPath != null)
+    {
+        <script type="text/javascript">
+            var requireConfig = {
+                pageOptions: '@ViewBag.PageOptions',
+                websiteOptions: '@ViewBag.WebsiteOptions'
+           };
+
+           require.config({
+                locale: '@Html.CurrentCulture()',
+                baseUrl: '@Url.Content("~/ViewJS")',
+                paths: @Html.GetRequireJsPathsOfPage("Home"),
+                shim: @Html.GetRequireJsShimOfPage("Home")
+           });
+        </script>
+    }    
+} 

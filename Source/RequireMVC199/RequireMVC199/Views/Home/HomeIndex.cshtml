@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Home Index";
+    Layout = "~/Views/Shared/_LayoutOfHome.cshtml";
+}
+
+<div id="header" style="height:40px;">
+    <a onclick="require(['Controllers/Home/Home-Index'], function(homeIndexComponent){
+        homeIndexComponent.gotoClick();
+        });
+
+        ">go to product list</a>
+</div>
+<div class="colmask blogstyle">
+	<div class="colmid">
+		<div class="colleft">
+            <div class="col1">
+                <div class="treeIn_right">
+                    <!--选项卡切换-->
+                    <div class="treeT_Menu_01" id="treeSubShow_01">
+                        <label class="selected" id="treeSSLabel_01_01">
+                            产品</label>
+                        <label id="treeSSLabel_01_02">
+                            库存
+                        </label>
+                    </div>       
+                    <!--选项卡切换 结束-->
+                    <div id="treeSSCont">
+                        <div id="treeSSCont_01_01" class="treeb_cont_01">
+                            <!--Home 内容区域-->
+                            <div class="treeb_con_01_wz" id="treeContainerProductSys" style="height:790px;">
+                            </div>
+                            <!--Home 内容区域 结束-->
+                        </div>
+                        <div id="treeSSCont_01_02" style="display: none;" class="treeb_cont_01" >
+                            <div class="treeb_con_01_wz" id="treeContainerStorageSys" style="height:790px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col2">
+                <div id="mainGridContainer"></div>
+            </div>
+            <div class="col3">
+                <div class="col31">
+                    <div class="topIn_right" id="topTabBar" style="display:none">
+                        <!--选项卡切换-->
+                        <div class="topT_Menu_01" id="topSubShow_01">
+                            <label class="selected" id="topSSLabel_01_01">
+                                产品详细
+                            </label>
+                            <label id="topSSLabel_01_02">
+                                订单基础数据
+                            </label>
+                        </div>       
+                        <!--选项卡切换 结束-->
+                        <div id="topSSCont">
+                            <div id="topSSCont_01_01" class="topb_cont_01" style="width:550px;height:800px;border:solid 1px;">
+                                <!--Home 内容区域-->
+                                <div class="topb_con_01_wz" id="topContainerProductForm" style="width:500px;height:290px;">
+                                </div>
+                                    <div class="bottomIn_right" id="bottomTabBar">
+                                    <!--选项卡切换-->
+                                    <div class="bottomT_Menu_01" id="bottomSubShow_01">
+                                        <label class="selected" id="bottomSSLabel_01_02">
+                                            库存明细</label>
+                                        <label id="bottomSSLabel_01_03">
+                                            出入库明细
+                                        </label>
+                                    </div>       
+                                    <!--选项卡切换 结束-->
+                                    <div id="bottomSSCont">
+                                        <div id="bottomSSCont_01_01" class="bottomb_cont_01" style="height:490px;width:550px;">
+                                            <!--Home 内容区域-->
+                                            <div class="bottomb_con_01_wz" id="bottomContainerStorageList">
+                                            </div>
+                                            <!--Home 内容区域 结束-->
+                                        </div>
+                                        <div id="bottomSSCont_01_02" class="bottomb_cont_01" style="display: none;"  >
+                                            <div class="bottomb_con_01_wz" id="bottomContainerStorageCheckList" style="height:490px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Home 内容区域 结束-->
+                            </div>
+                            <div id="topSSCont_01_02" class="topb_cont_01" style="display:none;height:690px;">
+                                <div class="topb_con_01_wz" id="topContainerOrderList" style="height:390px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col32">
+                       
+                </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<div id="footer" style="height:20px;"></div>
+
+@Html.Partial("../Shared/_RequireSetupOfHome")
+
+<script type="text/javascript">
+    require(['Controllers/Home/Home-Index'], function (homeObject) {
+        $(function () {
+            console.log('begin load home index');
+            homeObject.init();
+        });
+    })
+</script>

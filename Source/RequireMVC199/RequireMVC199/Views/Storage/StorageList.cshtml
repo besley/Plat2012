@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Storage List";
+    Layout = "~/Views/Shared/_LayoutOfList.cshtml";
+}
+
+<div id="storageListContainer" style="position:relative;">
+     <div style="width:600px;">
+        <div id="storageCuteToolBar" class="cutetoolbar">
+            <ul>
+                <li>
+                   <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/print.png" alt="" />打印</a>
+                </li>
+                <li>
+                    <a href="#"><img src="/PlatJS/Scripts/cutetoolbar/images/Excel.png" alt="" />Excel</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid-header" style="width:360px;">
+      <label>库存列表</label>
+    </div>
+    <div id="myGridStorage"  style="width:360px;height:500px;border:gray solid 1px;overflow-y:auto;"></div>
+    <div id="myPagerStorage" style="width:360px;"></div>
+</div>
+
+<a id="storageFormFancybox" data-fancybox-type="iframe" style="display:none"></a>
+
+@Html.Partial("../Shared/_RequireSetupOfList")

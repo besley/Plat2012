@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<div class="actions" >
+    <input type="button" id="btnStorageCheckFormSave" class="btn primary" value="保存" />
+    <input type="button" id="btnStorageCheckFormClose" class="btn" value="关闭" onclick="parent.jQuery.fancybox.close();"/>
+</div>
+<div id="storageCheckForm">
+    <input type="hidden" id="hdnStorageCheckFormOpType" value="" />
+    <fieldset  style="height:460px;">
+        <legend>新增/编辑产品</legend>
+        <input type="hidden" id="hdnStorageCheckFormStorageCheckId" value="@Model.ID" />
+        <div style="margin-left:5px;float:left" >
+            <label for="txtStorageCheckFormProductId">产品ID</label>
+            <input type="text" id="txtStorageCheckFormProductId" readonly="readonly" value="@Model.ProductId" />
+         </div>
+        <div style="margin-left:5px;">
+            <label for="txtStorageCheckFormCheckAmount">出入库数量</label>
+            <input type="text" id="txtStorageCheckFormCheckAmount" value="@Model.CheckAmount" />
+         </div>
+        <div style="margin-left:5px;float:none">
+            <label for="txtStorageCheckFormCheckPerson">操作人</label>
+            <input id="txtStorageCheckFormCheckPerson" value="@Model.CheckPerson" />
+         </div>
+         <div style="margin-left:5px;float:none">
+            <label for="txtStorageCheckFormCheckDatetime">操作人</label>
+            <input id="txtStorageCheckFormCheckDatetime" value="@Model.CheckDatetime" />
+         </div>
+    </fieldset>
+</div>
+
+@Html.Partial("../Shared/_RequireSetupOfForm")
+
+<script type="text/javascript">
+    require(['jquery'], function () {
+        var opType = "@ViewData["STORAGECHECK_ADD_OR_EDIT"]";
+        $("#hdnStorageCheckFormOpType").val(opType);
+    });
+</script>
+
+ 
+
