@@ -6,9 +6,19 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Plat.WebUtility
 {
+    public static class HttpClientType
+    {
+        public static readonly string CRUD = "CRUD";
+        public static readonly string CRUD_CREATE = "C";
+        public static readonly string CRUD_UPDATE = "U";
+        public static readonly string CRUD_RETRIVE = "R";
+        public static readonly string CRUD_DELETE = "D";
+    }
+
     /// <summary>
     /// Mime内容格式
     /// </summary>
@@ -17,6 +27,8 @@ namespace Plat.WebUtility
         XML = 0,
         JSON = 1
     }
+
+    
 
     public static class HttpClientHelper
     {
@@ -53,19 +65,29 @@ namespace Plat.WebUtility
             return result;
         }
 
-        public static void Insert(this HttpClient client)
+        public static string Insert(this HttpClient client, 
+            string jsonValue)
         {
-
+            StringContent content = new System.Net.Http.StringContent(jsonValue, Encoding.UTF8, "application/json");
+            var responseMessage = client.PostAsync("", content).Result;
+            var result = responseMessage.Content.ReadAsStringAsync().Result;
+            return result;
         }
 
-        public static void Update(this HttpClient client)
+        public static string Update(this HttpClient client,
+            string jsonValue)
         {
-
+            StringContent content = new System.Net.Http.StringContent(jsonValue, Encoding.UTF8, "application/json");
+            var responseMessage = client.PutAsync("", content).Result;
+            var result = responseMessage.Content.ReadAsStringAsync().Result;
+            return result;
         }
 
-        public static void Delete(this HttpClient client)
+        public static string Delete(this HttpClient client)
         {
-
+            var responseMessage = client.DeleteAsync("").Result;
+            var result = responseMessage.Content.ReadAsStringAsync().Result;
+            return result;
         }
     }
 }

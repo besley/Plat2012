@@ -1,6 +1,0 @@
-2012-10-31 15:37:44,413 [42] ERROR Plat.LogService.LogHelper [(null)] - 错误描述:获取产品信息发生异常！, 错误代码:1002, 错误标识:4cc28390-da92-454a-a624-1004d0dba21b
-System.ApplicationException: this is test error message
-   at ProductSys.Service.Implemention.ProductService.Get(String id) in f:\TAOERP\源代码\Samples\ProductWeb\ProductSys.Service\Implemention\ProductService.cs:line 60
-2012-10-31 15:41:07,263 [28] ERROR Plat.LogService.LogHelper [(null)] - 错误描述:获取产品信息发生异常！, 错误代码:1002, 错误标识:f62d4be7-98a5-470f-a8e4-9c40871e3956
-System.ApplicationException: this is test error message
-   at ProductSys.Service.Implemention.ProductService.Get(String id) in f:\TAOERP\源代码\Samples\ProductWeb\ProductSys.Service\Implemention\ProductService.cs:line 60

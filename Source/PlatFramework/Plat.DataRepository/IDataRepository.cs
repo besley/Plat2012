@@ -1,42 +1,58 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.Entity;
+using Dapper;
+using DapperExtensions;
 
 namespace Plat.DataRepository
 {
     /// <summary>
-    /// 数据持久化操作的接口
+    /// Data Repository
+    /// Implement Select, Insert, Update, Delete
     /// </summary>
-    /// <typeparam name="TDataEntity"></typeparam>
-    public interface IDataRepository<TDataEntity> : IDisposable 
-        where TDataEntity : class
+    public interface IDataRepository
     {
-        DbContext DbContext { get; }
-        DbSet<TDataEntity> DbSet { get; }
-        IList<object> IDs { get; }
-        Action<IList<object>> FlashCache { get; }
-                    
-        //Select
-        TDataEntity Get(object primaryID);
-        IEnumerable<TDataEntity> GetAll();
-        IEnumerable<TDataEntity> GetByIds(IList<object> ids);
-        IEnumerable<TDataEntity> Get(string where, params object[] values);
-        IEnumerable<TDataEntity> Get(int pageIndex, int pageSize, out long allRowsCount, string where, params object[] values);
-        IEnumerable<TDataEntity> Get(int pageIndex, int pageSize, out long allRowsCount, string orderByFieldName, string where, params object[] values);
-        IEnumerable<TDataEntity> Get(int pageIndex, int pageSize, out long allRowsCount, string orderByFieldName, SortType sortType, string where, params object[] values);
-        IEnumerable<TDataEntity> GetOrderByExpression(int pageIndex, int pageSize, out long allRowsCount, string orderByExpression, string where, params object[] values);
+        ISession Session { get; }
 
-        //Insert, Update, Delete
-        TDataEntity Insert(TDataEntity dataEntity);
-        void Update(TDataEntity dataEntity);
-        void Delete(TDataEntity dataEntity);
-        void Delete(object primaryID);
-        
-        //SaveChanges
-        void SaveChanges();
+        //select
+        T GetById<T>(dynamic primaryId) where T : class;
+        IEnumerable<T> GetByIds<T>(IList<dynamic> ids) where T : class;
+        IEnumerable<T> GetAll<T>() where T : class;
+        IEnumerable<T> Get<T>(string sql, dynamic param = null, bool buffered = true) where T : class;
+        IEnumerable<dynamic> Get(string sql, dynamic param = null, bool buffered = true);
+        IEnumerable<TReturn> Get<TFirst, TSecond, TReturn>(string sql, Func<TFirst, TSecond, TReturn> map,
+            dynamic param = null, IDbTransaction transaction = null, bool buffered = true,
+            string splitOn = "Id", int? commandTimeout = null);
+        SqlMapper.GridReader GetMultiple(string sql, dynamic param = null, IDbTransaction transaction = null,
+            int? commandTimeout = null, CommandType? commandType = null);
+
+        //count
+        int Count<T>(IPredicate predicate, bool buffered = false) where T : class;
+
+        //lsit
+        IEnumerable<T> GetList<T>(IPredicate predicate = null, IList<ISort> sort = null, bool buffered = false) where T : class;
+
+        //paged select
+        IEnumerable<T> GetPage<T>(int pageIndex, int pageSize, out long allRowsCount, IPredicate predicate = null, ISort sort = null, bool buffered = true) where T : class;
+        IEnumerable<T> GetPage<T>(int pageIndex, int pageSize, out long allRowsCount, IPredicate predicate = null, IList<ISort> sort = null, bool buffered = true) where T : class;
+
+        //execute
+        Int32 Execute(string sql, dynamic param = null, IDbTransaction transaction = null);
+ 
+
+        //insert, update, delete
+        dynamic Insert<T>(T entity, IDbTransaction transaction=null) where T : class;
+        void InsertBatch<T>(IEnumerable<T> entityList, IDbTransaction transaction=null) where T : class;
+        bool Update<T>(T entity, IDbTransaction transaction=null) where T : class;
+        bool UpdateBatch<T>(IEnumerable<T> entityList, IDbTransaction transaction=null) where T : class;
+        bool Delete<T>(dynamic primaryId, IDbTransaction transaction=null) where T : class;
+        bool Delete<T>(IPredicate predicate, IDbTransaction transaction=null) where T : class;
+        bool DeleteBatch<T>(IEnumerable<dynamic> ids, IDbTransaction transaction=null) where T : class;
     }
 }

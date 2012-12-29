@@ -1,0 +1,10 @@
+a {text-decoration:none;color:#666}
+a:link {text-decoration: none;}
+a:hover {text-decoration: none;color: #FD790A;}
+ul, li {list-style:none;margin:0;padding:0}
+.in_right { float:left;}
+.T_Menu_01 {height:23px;background:#BFDBFF;font-size:14px;}
+.T_Menu_01 LABEL{ background:url(images/bg_qh_over.gif) no-repeat;float:left; width:89px; line-height:23px; height:23px;color: #765;text-align:center; cursor:pointer}
+.T_Menu_01 .selected { background:url(images/bg_qh.gif) no-repeat; width:89px; HEIGHT:23px;color: #004E99}
+.b_cont_01 {width:694px; height:300px;float:left}
+.b_con_01_wz {padding-left:12px;width:672px;background:url(l_bg.gif);float:left;}

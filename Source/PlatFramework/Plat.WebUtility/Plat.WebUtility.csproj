@@ -30,19 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\Library\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Samples\ProductWeb\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\Library\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\..\Samples\ProductWeb\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector">
-      <HintPath>..\..\Samples\ProductWeb\packages\SimpleInjector.1.5.0.12199\lib\net35\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Extensions">
-      <HintPath>..\..\Samples\ProductWeb\packages\SimpleInjector.Extensions.1.5.0.12238\lib\net35\SimpleInjector.Extensions.dll</HintPath>
+      <HintPath>..\Library\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -58,6 +56,7 @@
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Samples\ProductWeb\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,21 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseController.cs" />
+    <Compile Include="ApiControllerBase.cs" />
+    <Compile Include="AutoMapperHelper.cs" />
+    <Compile Include="WebControllerBase.cs" />
     <Compile Include="HttpClientTest.cs" />
     <Compile Include="HttpClientHelper.cs" />
+    <Compile Include="JsTreeModel.cs" />
+    <Compile Include="UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClientHelper.cs" />
     <Compile Include="WcfException.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Plat.DataRepository\Plat.DataRepository.csproj">
-      <Project>{1fba6004-8231-443f-aedd-7918b7354992}</Project>
-      <Name>Plat.DataRepository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,64 @@
+﻿div.cutetoolbar {
+  background:#BFDBFF;
+  float:none;
+  font-size:93%;
+  line-height:normal;
+  width:100%;
+  height:auto;
+}
+
+div.cutetoolbar ul {
+  background: #BFDBFF url(images/bg_tab.png) repeat-x scroll center bottom;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 5px 0;
+  height: 26px;
+  overflow: hidden;
+}
+
+div.cutetoolbar ul li {
+  float: left;
+  margin: 0;
+  padding: 0 0 0 0px;
+}
+
+div.cutetoolbar a {
+  color:black;
+  display:block;
+  float:none;
+  padding: 4px 15px 0px 6px;
+  text-decoration:none;
+  cursor:default;
+  height: 23px; 
+}
+
+div.cutetoolbar a:hover {
+  color:#15428B;
+}
+
+div.cutetoolbar a {
+  outline:expression(hideFocus='true');
+  outline:0;
+}
+
+div.cutetoolbar :focus {
+  -moz-outline-style: none;
+}
+
+div.cutetoolbar ul li:hover {
+  background: transparent url(images/tab_left_over.gif) no-repeat scroll left top;
+  color: #15428B;
+}
+div.cutetoolbar ul li.current {
+  background-image:url(images/tab_left.gif);
+}
+
+div.cutetoolbar ul li:hover a {
+  background: transparent url(images/tab_right_over.gif) no-repeat scroll right top;
+}
+div.cutetoolbar ul li.current a {
+  background: transparent url(images/tab_right.gif) no-repeat scroll right top;
+  color: #15428B;
+}

@@ -1,285 +1,328 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data;
+using System.Dynamic;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
-using LINQExtensions;
 using System.Text;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.Entity;
+using Dapper;
+using DapperExtensions;
 
 namespace Plat.DataRepository
 {
     /// <summary>
-    /// 数据持久化操作类
+    /// Repository基类
     /// </summary>
-    /// <typeparam name="TDataEntity">数据实体类型</typeparam>
-    public abstract class RepositoryBase<TDataEntity> : IDataRepository<TDataEntity>
-        where TDataEntity : class
+    public class RepositoryBase : IDataRepository
     {
-        #region 抽象操作
-        /// <summary>
-        /// 获取DbContext的抽象方法
-        /// </summary>
-        /// <returns>DbContext</returns>
-        protected abstract DbContext CreateDbContext();
-        #endregion
-
-        #region 属性及构造
-        private DbContext dbContext = null;
-        /// <summary>
-        /// DbContext 实例
-        /// </summary>
-        public DbContext DbContext
+        private ISession _session;
+        public ISession Session
         {
-            get { return dbContext; }
+            get { return _session; }
         }
 
-        private DbSet<TDataEntity> dbSet;
-        /// <summary>
-        /// DbSet 实例
-        /// </summary>
-        public DbSet<TDataEntity> DbSet
+        public RepositoryBase(ISession session)
         {
-            get { return dbSet; }
-        }
-
-        private IList<object> ids;
-        /// <summary>
-        /// 要缓存的ID列表
-        /// </summary>
-        public IList<object> IDs
-        {
-            get { return ids; }
-        }
-
-        private Action<IList<object>> flashCache;
-        /// <summary>
-        /// 更新缓存事件
-        /// </summary>
-        public Action<IList<object>> FlashCache
-        {
-            get { return flashCache; }
-        }
-        
-        /// <summary>
-        /// 构造RepositoryBase
-        /// </summary>
-        public RepositoryBase()
-        {
-            if (dbContext == null)
-                dbContext = CreateDbContext();
-
-            this.dbSet = dbContext.Set<TDataEntity>();
-
-            if (ids == null)
-                ids = new List<object>();
-
-            //注册缓存事件
-            this.flashCache = items => FlashContainer.FlashCachedItems(GetDataEntityType().FullName,
-                items);
+            _session = session;
         }
 
         /// <summary>
-        /// 获取数据实体类型名称
+        /// 根据Id获取实体
         /// </summary>
-        /// <returns>类型</returns>
-        public Type GetDataEntityType()
+        /// <typeparam name="T"></typeparam>
+        /// <param name="primaryId"></param>
+        /// <returns></returns>
+        public T GetById<T>(dynamic primaryId) where T : class
         {
-            return typeof(TDataEntity);
-        }
-        #endregion
-
-        #region 数据记录Get操作
-        /// <summary>
-        /// 根据主键ID获取记录
-        /// </summary>
-        /// <param name="primaryID">主键ID</param>
-        /// <returns>实体对象</returns>
-        public virtual TDataEntity Get(object primaryID)
-        {
-            return dbSet.Find(primaryID);
+            return _session.Connection.Get<T>(primaryId as object);
         }
 
         /// <summary>
-        /// 获取全部数据集（适用于少量数据的数据表）
+        /// 根据多个Id获取多个实体
         /// </summary>
-        /// <returns>列表</returns>
-        public virtual IEnumerable<TDataEntity> GetAll()
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public IEnumerable<T> GetByIds<T>(IList<dynamic> ids) where T:class
         {
-            return dbSet.ToList<TDataEntity>();
+            var tblName = string.Format("dbo.{0}", typeof(T).Name);
+            var idsin = string.Join(",", ids.ToArray<dynamic>());
+            var sql = "SELECT * FROM @table WHERE Id in (@ids)";
+            IEnumerable<T> dataList = SqlMapper.Query<T>(_session.Connection, sql, new { table = tblName, ids = idsin });
+            return dataList;
         }
 
         /// <summary>
-        /// 根据多个主键ID获取数据集合, 类似 in 操作
+        /// 获取全部数据集合
         /// </summary>
-        /// <param name="ids">主键ID列表</param>
-        /// <returns>列表集合</returns>
-        public virtual IEnumerable<TDataEntity> GetByIds(IList<object> ids)
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<T> GetAll<T>() where T:class
+        {
+            return _session.Connection.GetList<T>();
+        }
+
+        /// <summary>
+        /// 根据条件筛选出数据集合
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public IEnumerable<T> Get<T>(string sql, dynamic param = null, bool buffered = true) where T:class
+        {
+            return SqlMapper.Query<T>(_session.Connection, sql, param as object, _session.Transaction, buffered);
+        }
+
+        /// <summary>
+        /// 根据条件筛选数据集合
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public IEnumerable<dynamic> Get(string sql, dynamic param = null, bool buffered = true)
+        {
+            return SqlMapper.Query(_session.Connection, sql, param as object, _session.Transaction, buffered);
+        }
+
+        /// <summary>
+        /// 统计记录总数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public int Count<T>(IPredicate predicate, bool buffered = false) where T : class
+        {
+            return _session.Connection.Count<T>(predicate);
+        }
+
+        /// <summary>
+        /// 查询列表数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate"></param>
+        /// <param name="sort"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public IEnumerable<T> GetList<T>(IPredicate predicate = null, IList<ISort> sort = null,
+            bool buffered = false) where T : class
+        {
+            return _session.Connection.GetList<T>(predicate, sort, null, null, buffered);
+        }
+
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="allRowsCount"></param>
+        /// <param name="predicate"></param>
+        /// <param name="sort"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public IEnumerable<T> GetPage<T>(int pageIndex, int pageSize, out long allRowsCount, 
+            IPredicate predicate = null, ISort sort = null, bool buffered = true) where T : class
+        {
+            IList<ISort> orderBy = new List<ISort>();
+            orderBy.Add(sort);
+
+            return GetPage<T>(pageIndex, pageSize, out allRowsCount, predicate, orderBy, buffered);
+        }
+
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="allRowsCount"></param>
+        /// <param name="predicate"></param>
+        /// <param name="sort"></param>
+        /// <param name="buffered"></param>
+        /// <returns></returns>
+        public IEnumerable<T> GetPage<T>(int pageIndex, int pageSize, out long allRowsCount,
+            IPredicate predicate, IList<ISort> sort, bool buffered = true) where T : class
+        {
+            IEnumerable<T> entityList = _session.Connection.GetPage<T>(predicate, sort, pageIndex, pageSize, null, null, buffered);
+            allRowsCount = entityList.Count();
+
+            return entityList;
+        }
+
+        /// <summary>
+        /// 根据表达式筛选
+        /// </summary>
+        /// <typeparam name="TFirst"></typeparam>
+        /// <typeparam name="TSecond"></typeparam>
+        /// <typeparam name="TReturn"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="map"></param>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <param name="buffered"></param>
+        /// <param name="splitOn"></param>
+        /// <param name="commandTimeout"></param>
+        /// <returns></returns>
+        public IEnumerable<TReturn> Get<TFirst, TSecond, TReturn>(string sql, Func<TFirst, TSecond, TReturn> map, 
+            dynamic param = null, IDbTransaction transaction = null, bool buffered = true, string splitOn = "Id", 
+            int? commandTimeout = null)
+        {
+            return SqlMapper.Query(_session.Connection, sql, map, param as object, transaction, buffered, splitOn);
+        }
+
+        /// <summary>
+        /// 获取多实体集合
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <param name="commandTimeout"></param>
+        /// <param name="commandType"></param>
+        /// <returns></returns>
+        public SqlMapper.GridReader GetMultiple(string sql, dynamic param = null, IDbTransaction transaction = null,
+            int? commandTimeout = null, CommandType? commandType = null)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 根据条件筛选数据
+        /// 执行sql操作
         /// </summary>
-        /// <param name="where">where条件语句</param>
-        /// <param name="values">参数</param>
-        /// <returns>列表集合</returns>
-        public virtual IEnumerable<TDataEntity> Get(string where, params object[] values)
-        {
-            return dbSet.SqlQuery(where, values);
-        }
-
-        /// <summary>
-        /// 根据条件获取记录
-        /// </summary>
-        /// <param name="pageIndex">页索引</param>
-        /// <param name="pageSize">每页记录数</param>
-        /// <param name="allRowsCount">总记录数</param>
-        /// <param name="where">查询条件</param>
-        /// <param name="values">参数</param>
-        /// <returns>记录集合</returns>
-        public virtual IEnumerable<TDataEntity> Get(int pageIndex, 
-            int pageSize, out long allRowsCount, string where, 
-            params object[] values)
-        {
-            return Get(pageIndex, pageSize, out allRowsCount, string.Empty, where, values);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pageIndex">页索引</param>
-        /// <param name="pageSize">每页记录数</param>
-        /// <param name="allRowsCount">总记录数</param>
-        /// <param name="orderByFieldName">排序字段名称</param>
-        /// <param name="where">查询条件</param>
-        /// <param name="values">参数</param>
-        /// <returns>记录集合</returns>
-        public virtual IEnumerable<TDataEntity> Get(int pageIndex, 
-            int pageSize, out long allRowsCount, string orderByFieldName, 
-            string where, params object[] values)
-        {
-            return Get(pageIndex, pageSize, out allRowsCount, orderByFieldName, SortType.Asc, where, values);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pageIndex">页索引</param>
-        /// <param name="pageSize">每页记录数</param>
-        /// <param name="allRowsCount">总记录数</param>
-        /// <param name="orderByFieldName">排序字段名称</param>
-        /// <param name="sortType">升序或降序</param>
-        /// <param name="where">查询条件</param>
-        /// <param name="values">参数</param>
-        /// <returns>记录集合</returns>
-        public virtual IEnumerable<TDataEntity> Get(int pageIndex, 
-            int pageSize, out long allRowsCount, string orderByFieldName, SortType sortType, 
-            string where, params object[] values)
-        {
-            string orderByExpression = string.Empty;
-            if (sortType == SortType.Desc)
-            {
-                orderByExpression = string.Format("{0} DESC", orderByFieldName);
-            }
-            return GetOrderByExpression(pageIndex, pageSize, out allRowsCount, orderByExpression, where, values);
-        }
-
-        /// <summary>
-        /// 获取有排序表达式的记录
-        /// </summary>
-        /// <param name="pageIndex">页索引</param>
-        /// <param name="pageSize">每页记录数</param>
-        /// <param name="allRowsCount">总记录数</param>
-        /// <param name="orderByExpression">排序表达式</param>
-        /// <param name="where">查询条件</param>
-        /// <param name="values">参数</param>
-        /// <returns>记录集合</returns>
-        public IEnumerable<TDataEntity> GetOrderByExpression(int pageIndex, 
-            int pageSize, out long allRowsCount, string orderByExpression, 
-            string where, params object[] values)
-        {
-            IQueryable<TDataEntity> query;
-
-            if (pageIndex < 0)
-                pageIndex = 0;
-
-            if (pageSize < 0)
-                pageSize = 10;
-
-            if (where != string.Empty)
-                query = dbSet.SqlQuery(where, values).AsQueryable<TDataEntity>();
-            else
-                query = dbSet.AsQueryable<TDataEntity>();
-
-            allRowsCount = query.Count();
-
-            int skipCount = ((pageIndex - 1) < 0) ? 0 : (pageIndex - 1) * pageSize;
-            if (orderByExpression != string.Empty)
-                query = query.Skip<TDataEntity>(skipCount).Take<TDataEntity>(pageSize).OrderUsingSortExpression<TDataEntity>(orderByExpression);
-            else
-                query = query.Skip<TDataEntity>(skipCount).Take<TDataEntity>(pageSize);
-
-            return query;
-        }
-        #endregion
-
-        #region 数据增删改操作
-        /// <summary>
-        /// 插入记录
-        /// </summary>
-        /// <param name="entityToInsert">要插入的实体</param>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
         /// <returns></returns>
-        public virtual TDataEntity Insert(TDataEntity entityToInsert)
+        public int Execute(string sql, dynamic param = null, IDbTransaction transaction = null)
         {
-            return dbSet.Add(entityToInsert);
+            return _session.Connection.Execute(sql, param as object, transaction);
         }
 
         /// <summary>
-        /// 更新记录
+        /// 插入单条记录
         /// </summary>
-        /// <param name="entityToUpdate">要更新的实体</param>
-        public virtual void Update(TDataEntity entityToUpdate)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public dynamic Insert<T>(T entity, IDbTransaction transaction=null) where T : class
         {
-            dbSet.Attach(entityToUpdate);
-            dbContext.Entry<TDataEntity>(entityToUpdate).State = EntityState.Modified;
+            dynamic result = _session.Connection.Insert<T>(entity, transaction);
+            return result;
         }
 
         /// <summary>
-        /// 根据主键ID删除记录
+        /// 更新单条记录
         /// </summary>
-        /// <param name="primaryID">主键ID</param>
-        public virtual void Delete(object primaryID)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Update<T>(T entity, IDbTransaction transaction = null) where T : class
         {
-            TDataEntity entityToDelete = dbSet.Find(primaryID);
-            Delete(entityToDelete);
+            bool isOk = _session.Connection.Update<T>(entity, transaction);
+            return isOk;
         }
 
         /// <summary>
-        /// 删除数据记录
+        /// 删除单条记录
         /// </summary>
-        /// <param name="entityToDelete">要删除的实体</param>
-        public virtual void Delete(TDataEntity entityToDelete)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="primaryId"></param>
+        /// <returns></returns>
+        public bool Delete<T>(dynamic primaryId, IDbTransaction transaction = null) where T : class
         {
-            if (dbContext.Entry<TDataEntity>(entityToDelete).State == EntityState.Detached)
+            var entity = GetById<T>(primaryId);
+            var obj = entity as T;
+            bool isOk = _session.Connection.Delete<T>(obj);
+            return isOk;
+        }
+
+        /// <summary>
+        /// 删除单条记录
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Delete<T>(IPredicate predicate, IDbTransaction transaction = null) where T : class
+        {
+            return _session.Connection.Delete<T>(predicate, transaction);
+        }
+
+        /// <summary>
+        /// 批量插入功能
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entityList"></param>
+        public void InsertBatch<T>(IEnumerable<T> entityList, IDbTransaction transaction = null) where T : class
+        {
+            var tblName = string.Format("dbo.{0}", typeof(T).Name);
+            var conn = (SqlConnection)_session.Connection;
+            var tran = (SqlTransaction)transaction;
+            using (var bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.TableLock, tran))
             {
-                dbSet.Attach(entityToDelete);
+                bulkCopy.BatchSize = entityList.Count();
+                bulkCopy.DestinationTableName = tblName;
+                var table = new DataTable();
+                var props = TypeDescriptor.GetProperties(typeof(T))
+                                            .Cast<PropertyDescriptor>()
+                                            .Where(propertyInfo => propertyInfo.PropertyType.Namespace.Equals("System"))
+                                            .ToArray();
+                foreach (var propertyInfo in props)
+                {
+                    bulkCopy.ColumnMappings.Add(propertyInfo.Name, propertyInfo.Name);
+                    table.Columns.Add(propertyInfo.Name, Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType);
+                }
+                var values = new object[props.Length];
+                foreach (var itemm in entityList)
+                {
+                    for (var i = 0; i < values.Length; i++)
+                    {
+                        values[i] = props[i].GetValue(itemm);
+                    }
+                    table.Rows.Add(values);
+                }
+                bulkCopy.WriteToServer(table);
             }
-            dbSet.Remove(entityToDelete);
         }
 
-        public virtual void SaveChanges()
+        /// <summary>
+        /// 批量更新（）
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entityList"></param>
+        /// <returns></returns>
+        public bool UpdateBatch<T>(IEnumerable<T> entityList, IDbTransaction transaction = null) where T : class
         {
-            this.dbContext.SaveChanges();
+            bool isOk = false;
+            foreach (var item in entityList)
+            {
+                Update<T>(item, transaction);
+            }
+            isOk = true;
+            return isOk;
         }
-             
-        #endregion
 
-        public void Dispose()
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public bool DeleteBatch<T>(IEnumerable<dynamic> ids, IDbTransaction transaction = null) where T : class
         {
-            if (this.dbContext != null)
-                this.dbContext.Dispose();
+            bool isOk = false;
+            foreach (var id in ids)
+            {
+                Delete<T>(id, transaction);
+            }
+            isOk = true;
+            return isOk;
         }
     }
 }
