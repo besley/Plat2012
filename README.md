@@ -19,6 +19,7 @@ entity pattern, plugin architecture and asp.net mvc/web api architecture. There 
  
 The require mvc project would give you a full tutorial how to use the plat library and webapi to create a rich mvc web
 application. Similarily, there sare serveral key points to describe here:
+
 1. The javascript block included in asp.net mvc view can call service/webapi by ajax get, post method;
 2. RequireJS is a modular framework to avoid javascript global namespace problem, javascript load issue;
 3. Slickgrid is a javascript control for displaying large records with high performance;
