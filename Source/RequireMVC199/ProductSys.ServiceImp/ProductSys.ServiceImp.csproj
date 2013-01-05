@@ -31,16 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\AutoMapper.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector.Extensions">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.Extensions.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\SimpleInjector.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

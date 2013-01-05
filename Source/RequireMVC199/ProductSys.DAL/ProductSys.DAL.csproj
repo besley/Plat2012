@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\EntityFramework.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

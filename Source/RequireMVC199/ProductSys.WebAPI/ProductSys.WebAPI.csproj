@@ -56,7 +56,7 @@
       <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector, Version=1.6.0.12319, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,10 +115,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\System.Web.Optimization.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers">
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\System.Web.Providers.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -138,11 +138,11 @@
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\WebGrease.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
-      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\..\PlatFramework\Library\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
