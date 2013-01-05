@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="adad623d-0184-4b6c-b10b-5ce9ac759ba3" name="ServiceImplementation" linkedPackageId="8576e921-8dd2-419f-b983-e78cae640e34" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="0ba27333-4530-4cd2-a9c0-cba3b4ab6fb7">
+      <profileInstance Id="90f77ddf-855a-4395-8a3b-5b64fb2d26e8" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="1ff0b66e-418d-410c-99f9-ab752836bc49">
+      <profileInstance Id="caa513d4-8e49-42d2-a0f7-8149916c67c6" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="d23ba229-decc-4e89-9c99-3801ac55fe28" name="IService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1dc3ed55-ae1c-46cb-8d12-210536f3f40b" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="93ab40ae-8645-4588-aaa8-a62ccce7f7c1" name="IOrderService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="426437c4-db2a-462f-b82d-e933eebdff33" />
+        <generalsInternal>
+          <generalization Id="d65ba699-bc23-4348-ba34-cecf7aca6f02" isSubstitutable="false">
+            <interfaceMoniker Id="d23ba229-decc-4e89-9c99-3801ac55fe28" LastKnownName="IService" />
+            <elementDefinition Id="957e70c9-dec4-4f19-bb54-274ffc2d3061" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperations>
+          <operation Id="39306804-8c4c-4b3e-92f0-855a5d2e039a" name="OrderView GetOrderView" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="834b57cd-ca89-4280-95ba-b62f4729c7e7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1f9fa8e9-6185-4a06-a22d-9e924ea597d9" name="string id" direction="In" isUnique="false">
+                  <elementDefinition Id="c8a6a3b1-1096-4147-8651-fa43100e8e29" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5618d294-5458-4fc3-909f-e59c69daf868" name="OrderService" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="670c8d01-a65a-4b10-851f-04cae1a02a49" />
+        <suppliersInternal>
+          <interfaceRealization Id="6d2a78db-2319-42bb-9ef0-4bae803a8055">
+            <interfaceMoniker Id="93ab40ae-8645-4588-aaa8-a62ccce7f7c1" LastKnownName="IOrderService" />
+            <elementDefinition Id="5be9d583-9b32-4cff-87e7-3e87026fa0b8" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="9a400eba-99c8-4ede-8ab4-b87ec377c010" isSubstitutable="false">
+            <classMoniker Id="38e997c6-8672-4c2d-82b4-1aeafb810a93" LastKnownName="ServiceBase" />
+            <elementDefinition Id="0451ca7b-18be-4d42-adf5-0c2fdfd5999f" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="93faf860-fe6b-4e8f-9109-5985b8d71e4b" name="OrderView GetOrderView" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="da1a4fa3-f6a2-4d9a-ae3f-7b6d23296236" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b6bff2a4-8e5c-41c0-8b3f-e7430a9d4232" name="string id" direction="In" isUnique="false">
+                  <elementDefinition Id="89cdef27-6e45-4699-972a-f64411b4cb29" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="38e997c6-8672-4c2d-82b4-1aeafb810a93" name="ServiceBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5d4da799-dd52-4fa3-9c61-98d4fc273bc7" />
+        <suppliersInternal>
+          <interfaceRealization Id="d9b2b73c-380b-4d9f-b4bb-42bfc8b49983">
+            <interfaceMoniker Id="d23ba229-decc-4e89-9c99-3801ac55fe28" LastKnownName="IService" />
+            <elementDefinition Id="3ccd1f80-abc2-4049-84a7-5b8dd77b5b3a" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="8576e921-8dd2-419f-b983-e78cae640e34" name="ProductWebModeling">
+    <elementDefinition Id="643f31ec-e26f-4cfc-b99e-e7f1e448a12b" />
+  </package>
+</logicalClassDesignerModel>

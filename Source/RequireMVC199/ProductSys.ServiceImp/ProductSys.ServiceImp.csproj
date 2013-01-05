@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D0002AD-FA14-4127-AFDE-6ADB6619F6E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProductSys.ServiceImp</RootNamespace>
+    <AssemblyName>ProductSys.ServiceImp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Service\FunctionMenuService.cs" />
+    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PlatFramework\DapperExtensions\DapperExtensions.csproj">
+      <Project>{4c1a2c6c-a469-4c87-98d1-f1d517fa1acf}</Project>
+      <Name>DapperExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Dapper\Dapper.csproj">
+      <Project>{daf737e1-05b5-4189-a5aa-dac6233b64d7}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.DataRepository\Plat.DataRepository.csproj">
+      <Project>{069ec405-4781-4f95-8201-2820723abdab}</Project>
+      <Name>Plat.DataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.ServiceBuilder\Plat.ServiceBuilder.csproj">
+      <Project>{2cbbc90a-b6ff-48d9-b59d-e4284c8b17c4}</Project>
+      <Name>Plat.ServiceBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.WebUtility\Plat.WebUtility.csproj">
+      <Project>{b90de653-f768-465a-bb23-3b5b4d89c96c}</Project>
+      <Name>Plat.WebUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.BizEntity\ProductSys.BizEntity.csproj">
+      <Project>{10b0c2c2-1477-45b5-8ee6-f82fff03340e}</Project>
+      <Name>ProductSys.BizEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.DAL\ProductSys.DAL.csproj">
+      <Project>{8b0791c1-7766-43dc-9be4-2edfeda14690}</Project>
+      <Name>ProductSys.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.Interface\ProductSys.Interface.csproj">
+      <Project>{988a3b43-1193-436a-b4f0-d844506b736f}</Project>
+      <Name>ProductSys.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

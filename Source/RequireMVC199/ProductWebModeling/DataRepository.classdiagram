@@ -1,0 +1,1203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="af33f266-b44e-4490-97a8-c675ead94a3e" name="DataRepository" linkedPackageId="96de6ee6-78b5-489f-87c4-24b75fb14bf1" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="2613176c-7bc8-496b-8d75-4e11b3e69fc3" name="IDataRepository" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d131b4c1-04f4-41a9-8660-9ce86605bc85" />
+        <ownedAttributes>
+          <property Id="3e45c0e5-94c7-4bad-818c-f6ec84edf04d" name="ISession session" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e8e562cd-1db5-43ff-8484-c2e85c74a601" />
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation Id="df7bb1c7-614d-48ec-beb7-d8780f823e60" name="T GetById&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="72e67508-b955-47e7-89a2-31a7cde31ee6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0019554c-603a-468b-9b5b-91e7fc6cf122" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="a5129082-4ac5-46da-b60b-23c67eab2c10" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="12c69c01-bda2-45de-8e6c-f9772fb5feeb" name="IEnumerable&lt;T&gt; GetAll&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="045cfec4-d45e-49eb-9249-781dfaa0735a" />
+          </operation>
+          <operation Id="d2d730f6-b402-4311-b978-86519264e8a7" name="Get&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8fb42f62-aae9-4c27-a93e-211ea505bddd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d5d1d819-9ca3-48a9-a471-03035fd2a11e" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="064cf3d2-52bd-48d8-a9a1-4c6a3cdde74b" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="33b45c0c-748d-4011-b5bc-14c626876227" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="6cd01e58-53d8-4f40-8e2d-35b628a0919e" />
+                  <defaultValue>
+                    <literalString Id="e71687fc-1fbc-47b4-a704-8c2efe400994" name="DefaultValue" value="null">
+                      <elementDefinition Id="47bfc1ff-8991-4ead-b8e3-b3c1f2e392aa" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0525e4cc-8463-44e4-894e-b08fc95040ba" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="bab69a21-b81b-4602-8350-c34104d58a0d" />
+                  <defaultValue>
+                    <literalString Id="dc6bfee2-195d-4ae5-9c83-d9a63ce0e807" name="DefaultValue" value="true">
+                      <elementDefinition Id="53726fb8-33ef-428e-a0fc-a7dda0fd510c" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4f5304ed-ac9d-45d3-bf6a-04979db3b45d" name="int Count&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e0f03c86-7a68-4ac9-ad9a-d4e519bdd9a5" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c789dcd6-c377-48df-a1a1-83b6b501dd7f" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="188cbbf8-d02e-4da3-85fc-3f88f28156df" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ba2a403e-d4b5-4bd7-83a9-09ed407537be" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="a1abb79c-7a1f-46e7-8687-ca53b3d4e74e" />
+                  <defaultValue>
+                    <literalString Id="30ba764a-dc56-4533-b596-345633f90042" name="DefaultValue" value="false">
+                      <elementDefinition Id="ef899d1f-3b98-44b7-9f45-cb5983ebf7fb" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="42d74519-5890-4b8f-9ed0-a7d40a79d07c" name="IEnumerable&lt;T&gt; GetList&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="706b5e84-3b49-4c88-a627-36dc62571e4b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="135b01ad-0147-41df-9ec6-1e4b159a8659" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="6a11158f-02b0-4bf0-956d-e8dd7323db76" />
+                  <defaultValue>
+                    <literalString Id="c7a4e178-5f75-4ecb-bb07-cdc68d372bf5" name="DefaultValue" value="null">
+                      <elementDefinition Id="6472aa24-0a49-4657-9732-a91ffe281659" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="918e4267-fac9-48eb-a2f2-bd4112cb29e5" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="652bcabb-4049-4228-a8b4-cf54e428dd16" />
+                  <defaultValue>
+                    <literalString Id="8a573dc7-dac3-4974-ac5a-872d49e89a8a" name="DefaultValue" value="null">
+                      <elementDefinition Id="b95f0ef7-d5b3-4d82-b05f-af9d94df63db" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="629f45e6-ec43-4799-9532-8dfb4ee7a010" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="c1fb7d97-36cb-4b04-b914-ea37978a15f7" />
+                  <defaultValue>
+                    <literalString Id="d1a258c9-0b8d-4ede-8c5a-95338a5136c2" name="DefaultValue" value="false">
+                      <elementDefinition Id="92c362ad-743c-46ed-aeff-73a1710f013c" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="2bd77d51-be74-4e60-b9c8-9a1804f07b8c" name="IEnumerable&lt;T&gt; GetPage&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7df18bf1-7498-49c8-b10b-683c009d83c0" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cc9d4845-78fe-4810-8a6d-5b4117c1485d" name="int pageIndex" direction="In" isUnique="false">
+                  <elementDefinition Id="5075e733-6dbe-493f-af9d-b804ba568e16" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0847ac91-c7ff-4f63-ab6a-eb57e8285747" name="int pageSize" direction="In" isUnique="false">
+                  <elementDefinition Id="f1bfc83e-ddb7-40dc-b4f9-ab076f1d3560" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0f9fee4c-87de-4015-9ac2-87657121bc67" name="long allRowsCount" direction="Out" isUnique="false">
+                  <elementDefinition Id="a76e56fa-619f-496c-b821-a1c3e5ff3738" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4e867ef9-e36a-4cd2-a64d-e4f6aea6c746" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="6a2df76e-2351-416f-9f02-a5f1d48709d2" />
+                  <defaultValue>
+                    <literalString Id="7c9d3873-175d-4249-965f-bc5dd780a743" name="DefaultValue" value="null">
+                      <elementDefinition Id="25fe9262-dc80-438d-afbb-8d20ec2c61f3" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cf1a9dcb-e3a9-49f0-b964-f86fb2d636fd" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="a08c2f70-bbca-4ff6-8beb-9b0823d0f686" />
+                  <defaultValue>
+                    <literalString Id="9ad2c8a8-5cf3-49a4-a7b4-214cf0ea97c2" name="DefaultValue" value="null">
+                      <elementDefinition Id="41028107-19c5-4a84-ae13-4f7ffafdf565" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c95c729a-827e-4fc2-a559-680f41bfadcb" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="d326d337-5451-4f4d-9150-5954a7a313b9" />
+                  <defaultValue>
+                    <literalString Id="6c814d21-6249-42b0-9072-f3495174c2ae" name="DefaultValue" value="true">
+                      <elementDefinition Id="a331daad-d99a-4c04-9bc8-7e5ddf7588a7" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f2091a58-1102-4529-8b64-aea158a268ea" name="dynamic Insert&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ec45cc82-53d7-4ebe-90a6-d2c604971912" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="90d83ef5-3ba5-4957-9fee-23b6ea0c87c4" name="T entity" direction="In" isUnique="false">
+                  <elementDefinition Id="757d074a-84c3-4d55-b3e6-321b55e2c409" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9211ad75-0f03-4b44-8c87-57649eecd4cd" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="a90d27c5-8ffd-450f-987a-de99e38b5fd2" />
+                  <defaultValue>
+                    <literalString Id="49d8f0a0-ea55-4b00-82a9-a96eb6040d2b" name="DefaultValue" value="null">
+                      <elementDefinition Id="30075835-0e18-47e0-bff5-d1b38f6d5160" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a611f3a8-7365-46d7-a2df-af0e9ecd42a7" name="void InsertBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="300bcd43-38d3-4c42-9dd0-154e7b5a174b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="68b8c480-58ce-4c11-a85f-e4bb567e5eb7" name="IEnumerable&lt;T&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="d306eecd-1f0d-4a53-900b-e6e908915e84" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="086415ec-19e3-48a6-be36-13d447f1d4ad" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="f8a5226e-6127-4bad-8dc2-8cb5bb257453" />
+                  <defaultValue>
+                    <literalString Id="79db38e2-e465-4970-b2b3-f472e434f06c" name="DefaultValue" value="null">
+                      <elementDefinition Id="b02042d3-8ab5-400e-bb9c-278250bdeadc" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4dc14050-93c5-4364-996a-58d5a46b160e" name="bool Update&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="73ff32d8-bbff-4c5f-8bc1-567a4b8c5460" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="202b0ff0-830e-40b9-87b4-0c7266dc3bb7" name="T entity" direction="In" isUnique="false">
+                  <elementDefinition Id="6bd26935-66a7-4bb2-a33b-11d0d9b2bb28" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d14abf59-7074-4921-91e1-044b41aa5692" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="17675d55-6af6-4144-9846-1eedad55f2a0" />
+                  <defaultValue>
+                    <literalString Id="c395da1b-29b0-4367-a57b-a29edfcad182" name="DefaultValue" value="null">
+                      <elementDefinition Id="02dcedfb-b687-40c1-9538-bcac0a8d24dc" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="b2cef0fa-8089-420b-91fe-c8da2e353df4" name="bool UpdateBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8c554406-f443-46e9-b541-a0daa2b7dc77" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="849ba472-5b4a-43fa-a72e-3eaf622e3214" name="IEnumerable&lt;T&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="43a0cf2d-d24b-4bb1-8705-dd2398ea9d99" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d51dabd9-0ca8-4274-95d4-ad19e437d581" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="40f5ada3-9204-4418-8567-af91ce3e8b37" />
+                  <defaultValue>
+                    <literalString Id="fdf26068-dda1-407e-ae9e-0009a8d3f5bd" name="DefaultValue" value="null">
+                      <elementDefinition Id="ad14ee90-fef0-41d8-9213-618e4ad03caa" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="203960ee-2f4c-4311-b815-a3791e630960" name="bool Delete&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5d5bf9b1-de8c-4e41-89d8-c42679661a55" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d2e46998-d4b0-46b3-b37e-b0d19efe64cd" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="8c1c765f-8b25-44f8-8c6b-b21bc61965ba" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a4fd4b4d-44d4-481d-898b-f2523d380ccc" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="a6a47632-5854-4504-8be0-9eda39c6cfa7" />
+                  <defaultValue>
+                    <literalString Id="7fa540c7-d4a5-481d-ab91-c911ff205786" name="DefaultValue" value="null">
+                      <elementDefinition Id="dcc98af6-9730-4981-973b-52d30ab24c54" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="1506eaec-259a-4a28-9006-460c7b7a9f69" name="bool Delete&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a035d5d7-89a4-43e3-9c7d-e798d5a27645" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cbebc767-98d9-4000-ace8-6c1e2c1eb1fb" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="33c69925-137e-4beb-bfde-32bb1da0fb08" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b35c457a-dae1-431d-a15b-d27858eb8ffe" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="7882efb7-c1f7-47b1-9448-fbb594b6d518" />
+                  <defaultValue>
+                    <literalString Id="d350c05c-c24b-4525-8ac9-98b3fc50dc3f" name="DefaultValue" value="null">
+                      <elementDefinition Id="9910731f-bdb3-4bef-83cd-93358b63fdfc" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5d651128-a18a-4477-8277-86934875739d" name="bool DeleteBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="44931b57-9a0f-42ba-ae16-172a6790d48b" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c743cb9a-0b85-4c1b-b60a-b13b48f6da28" name="IEnumerable&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="4aede698-bfb0-4624-a98c-a70c74287a87" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7e0faa06-69c2-4ae7-8cd4-11d9f7190995" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="b111c833-6271-4b1e-8313-4d6d184713e1" />
+                  <defaultValue>
+                    <literalString Id="dfbc36d8-9a4b-4470-b6cf-8b24c007d05c" name="DefaultValue" value="null">
+                      <elementDefinition Id="fba63682-c80b-4189-862c-c2e6b1e8f3af" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="14848ff0-cfa6-4a1f-863b-c35a19a5ad02" name="RepositoryBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5b52c1f5-b877-4ddd-8f27-0fde73b881f7" />
+        <suppliersInternal>
+          <interfaceRealization Id="18310238-a53a-4710-815d-33d54ba352af">
+            <interfaceMoniker Id="2613176c-7bc8-496b-8d75-4e11b3e69fc3" LastKnownName="IDataRepository" />
+            <elementDefinition Id="8925c078-975a-4961-82a7-ec006e2afdda" />
+          </interfaceRealization>
+          <dependency Id="c94a3200-c0f8-4dd2-9175-17b0aca1719f">
+            <classMoniker Id="06ecbb9d-a9da-4ff8-8b64-3f84f42f0c31" LastKnownName="Dapper" />
+            <elementDefinition Id="839c1f8c-54c2-442f-abce-d04a224fc821" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="9dd6165c-4b1a-4a7d-9e9b-a61442a52661" name="T GetById&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9508b6fd-c315-4f68-bc30-07104a7ad071" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="69c733aa-7771-4d9b-9244-efdbb0df230c" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="7e02f3da-c9b2-41f9-b149-1a4e9b8a2d57" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="dfa3fef2-8764-4197-be00-6321c8ecca6e" name="IEnumerable&lt;T&gt; GetAll&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1fc17141-45c2-4aef-b190-d73d7390b36c" />
+          </operation>
+          <operation Id="d6ef4f15-cd2c-4cca-87d5-2fcdfbf6dab7" name="Get&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3dee2273-492d-47b8-a990-d05032ed8478" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8b5180b2-68dc-4326-ae30-c4c40153c615" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="a89434af-0e7f-404d-a793-7bc721e2af3c" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6890b38b-88f1-4b48-9487-a625588de8f9" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="133f8630-8b9d-496c-8116-0d305ac2a068" />
+                  <defaultValue>
+                    <literalString Id="e8721a07-23f9-468a-9a06-12b708116d05" value="null">
+                      <elementDefinition Id="9c298b47-fa9d-4bab-a9a8-8be130213b8a" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7cc6a8e3-e921-41a2-80dd-cc4623190f07" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="7eab71f9-db83-4972-9baf-3cbaed7a161a" />
+                  <defaultValue>
+                    <literalString Id="bee72bdd-1ad6-4ab6-9d88-ba91bb9aa701" value="true">
+                      <elementDefinition Id="a35fd604-53e9-4552-94ac-262cba873933" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="fb2892c9-28e4-4f32-974c-6fbb89fac09f" name="int Count&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3fef81f7-f499-4f88-9190-d055bc7d8c51" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6687615a-2324-4304-a00e-eaffe0bb8b52" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="d69b3803-b236-4099-94f6-88db46d43266" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5e953fab-afe3-43f8-b083-4b6879fa6801" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="6474c191-a3d3-4cf7-bca8-ad7208901125" />
+                  <defaultValue>
+                    <literalString Id="81cc58a4-f27b-4119-882d-a768c69b9911" value="false">
+                      <elementDefinition Id="153e1e47-427e-4011-9840-c46a49dd7c83" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="de791794-780a-4c0c-8e58-62b009923d30" name="IEnumerable&lt;T&gt; GetList&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0ad14f0a-61a6-4464-b80d-0e9192a38da3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b20db086-9ae3-4301-a683-0548fe586816" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="c06cca18-55e1-450b-b52a-1bce10304bdd" />
+                  <defaultValue>
+                    <literalString Id="0b0e385e-7c61-4447-8ccb-621d4dcc8414" value="null">
+                      <elementDefinition Id="924205d0-3522-4d36-bcf4-818e642dc79d" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c1930201-a8bf-425a-a14d-53abf37ed9dc" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="958532f8-b963-45fe-8dda-122827424972" />
+                  <defaultValue>
+                    <literalString Id="3184af9c-4a50-450a-b8e8-2c8fbb1dba57" value="null">
+                      <elementDefinition Id="58a9d88e-02e0-441c-88eb-c8452c826491" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ea978ee5-f123-429e-bd1c-c52c69f36dc7" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="5c675aa2-3c4f-4d3f-95c5-b85fe7b55c26" />
+                  <defaultValue>
+                    <literalString Id="8df1404a-4ba5-4feb-ab3b-ac4eeeedf43b" value="false">
+                      <elementDefinition Id="9a4e0cc9-d86c-42a7-9e84-e115f856f62c" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="69961650-ddd1-4db4-83b1-0e048147d681" name="IEnumerable&lt;T&gt; GetPage&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5506b506-1c50-4c45-9cd8-f08959f8d7b3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a5fa09ea-0ce9-4dc6-96dd-26fbb5213928" name="int pageIndex" direction="In" isUnique="false">
+                  <elementDefinition Id="09032db1-6ee8-4708-8a22-1f8030de8b03" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3468024f-373a-4276-8fb4-31a2ea661f9a" name="int pageSize" direction="In" isUnique="false">
+                  <elementDefinition Id="a974991d-740b-4b72-9522-aa8a704d0317" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8b431d01-bf29-44dc-8823-e6785403c9c5" name="long allRowsCount" direction="Out" isUnique="false">
+                  <elementDefinition Id="e2c9ad02-a845-44b9-bcd1-915934f09a00" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="619413cb-fdee-4e57-a250-afa8f1c67df6" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="a1acf72c-9708-4718-a129-915eb629a310" />
+                  <defaultValue>
+                    <literalString Id="bb5f328c-deea-4f57-8e00-7dcabc57e198" value="null">
+                      <elementDefinition Id="b75bacde-8bad-4968-b3d5-e45920e31a49" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ce6689bc-b0bf-4d5f-9f6e-03a00f518d00" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="d76eb18d-9857-4a82-adb1-6c6e0e97d68a" />
+                  <defaultValue>
+                    <literalString Id="f00312bf-17c0-4381-99f8-4b65568f9e95" value="null">
+                      <elementDefinition Id="9cd286ac-c058-4854-b0e7-fb048652ccab" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="67a6e42d-0051-4968-a3a6-9fa76094d557" name="bool buffered" direction="In" isUnique="false">
+                  <elementDefinition Id="f8211a01-ca56-429d-8b60-73228de0838b" />
+                  <defaultValue>
+                    <literalString Id="3062b0be-6800-477f-b1c3-e06344dfe62a" value="true">
+                      <elementDefinition Id="94bb2913-123c-4667-a047-b6f6a28cb26d" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a6872115-3c24-477a-8a60-4f9c7b6553fe" name="dynamic Insert&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="58b55e07-d583-4a8c-b26b-97b974aa8554" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1745d7b5-1ad0-42fe-961b-b3688929d4b9" name="T entity" direction="In" isUnique="false">
+                  <elementDefinition Id="f2cfda15-2ae6-441a-b7aa-e767c4a71407" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9e2b3145-86f6-423b-94ff-efc242ea1494" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="6bff08e8-99c8-4241-98d9-7cff94f2fe4d" />
+                  <defaultValue>
+                    <literalString Id="a2db16f6-0a02-48af-ac41-2f47e5cfaf15" value="null">
+                      <elementDefinition Id="c21b5cea-4a7b-442d-bbe0-bd22de052b21" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="036e5ff4-5613-4456-b31c-a40c5699bcb1" name="void InsertBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="93c2efad-90e6-4e6a-a9b1-589e2a30ed89" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5185c288-cd2b-4af2-b51e-08f3f9bc6fa0" name="IEnumerable&lt;T&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="c4d203af-cf54-434d-939b-465e219ef2dd" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="38e23e22-5530-4722-984a-bbcdcf2f5d47" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="e219786f-2a33-4876-b5bd-07ded4e50cff" />
+                  <defaultValue>
+                    <literalString Id="1ce2cddc-f24b-4f0d-9577-bcd6364ab803" value="null">
+                      <elementDefinition Id="05ec9fbf-3bd6-4c1a-8c3d-70c06d891140" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="6a23a053-ebf2-4622-93ea-c05aca94e447" name="bool Update&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3d4be90a-8b2e-4a36-a434-0e9af129aa85" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a9c1f593-2d86-4a4b-9638-e551f25cfc5d" name="T entity" direction="In" isUnique="false">
+                  <elementDefinition Id="66c30d1f-2f48-45e2-a20a-5b176816409a" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2f7a5151-86ca-4b4d-9eae-2d463ab77deb" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="a27c29ba-9d4e-428c-9d6d-98bfeb7a0d83" />
+                  <defaultValue>
+                    <literalString Id="18c6afe6-d380-445c-97c1-66c05fa20f11" value="null">
+                      <elementDefinition Id="af880a00-1886-4736-ae16-57af90514c1f" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d5122cbc-1c79-4a98-a982-9d58c92d388c" name="bool UpdateBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1b6452e9-a106-4b0a-8ee2-a783cb5f0266" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0fc8f3bb-a2b3-4b51-8eaf-1549eeea9956" name="IEnumerable&lt;T&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="8ecf6d7e-7c50-4f71-9f33-c11b204f7e6f" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bf5bdadd-9242-4f35-b9e6-816decd6dcf6" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="7c708099-3a09-4238-9383-789373f0fcf0" />
+                  <defaultValue>
+                    <literalString Id="6b0d72b5-1431-4cae-8d44-b555b92e4c79" value="null">
+                      <elementDefinition Id="05bdc894-1b24-43c3-a2a9-dded9c6b1fce" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="b1d6b8cb-2190-4bdb-b8a7-26cd441e97ce" name="bool Delete&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5fdf0a35-f5c2-48eb-8939-8196b5c1c30d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d045d73a-1a20-48ca-92b1-18f0177e974f" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="e1c9566d-1bee-4191-b130-cc164031618e" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9043b7ac-58ae-4dd8-8243-39603136bf7e" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="3f5c8e65-4af6-4a8d-9a19-722654044868" />
+                  <defaultValue>
+                    <literalString Id="ae847ee8-8ce8-46e1-885b-eed0df593203" value="null">
+                      <elementDefinition Id="1f52cd4d-c576-444d-8b29-f6c4bfa7d983" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="0c139ce2-35b1-4e2e-bd74-31bb344eb6be" name="bool Delete&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="89c40198-9287-4881-8c9c-231fd6bdcfe7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d51a51e6-cb8c-45b3-aa53-438a379ef59a" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="70353cc0-efba-4ff1-8b7a-7ea4f9c0080a" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="edb7dfd0-b7cc-4545-8f21-2df5e995ab0a" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="403d6c49-92fc-4b7f-ac72-666ca5d45eb3" />
+                  <defaultValue>
+                    <literalString Id="fdd8f476-4e75-47a6-b16f-3775879d3227" value="null">
+                      <elementDefinition Id="c81d9761-117b-4dae-a6f7-2fd2ac65a94b" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="08e11fda-8b45-41a3-be71-ade942045f4f" name="bool DeleteBatch&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5c0d5e16-1dab-4575-8892-f762f22e7e37" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="96c90326-c7af-40c1-8d6c-5b24cf27f70a" name="IEnumerable&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="83316b15-0e1d-495a-98eb-f0192b51bffd" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a79b461e-60fb-4036-8645-2a26cc380fa2" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="798bb69f-3658-4384-aa3c-648056109c96" />
+                  <defaultValue>
+                    <literalString Id="81e4460f-83ca-4043-95bc-abbdbe325169" value="null">
+                      <elementDefinition Id="c53e6818-703e-42c6-b52c-f71b73d3ed6a" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="06ecbb9d-a9da-4ff8-8b64-3f84f42f0c31" name="Dapper" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3e4c043f-e074-4a78-b435-be96774cc6a1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="48c1a548-a9ac-4882-8b42-412bd0cc80d5" name="IService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d80090fc-624e-4442-80d2-2a14d4e974c8" />
+        <ownedAttributes>
+          <property Id="5d870a97-10f9-467b-afaa-1d8c07fbc82a" name="IContainer Container" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="56c977a9-5481-4864-936e-0132bf5db027" />
+          </property>
+          <property Id="1bb54e2c-760f-44a1-90a6-547a54953444" name="ISession Session" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9cbe9f99-9804-4e74-b0d3-a3c08517fcf8" />
+          </property>
+          <property Id="0e276bd8-7b0d-4ddc-a0a8-0204f70d27b8" name="IDataRepository DataRepository" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2e8b6594-e1b4-44f0-97fa-0b2ce55deaf7" />
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation Id="39277c39-e3ec-49a5-bdb2-d470f7f95fa5" name="void Initialize" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="60176b34-5876-4abf-86b4-fa0fa5d817bd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dcc19317-380a-48a7-97c6-6597eb94e279" name="IContainer container" direction="In" isUnique="false">
+                  <elementDefinition Id="e2a96388-07db-4852-a650-58f5080c5abe" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e613ebdb-5cec-484d-b8ab-d9f005f4abb0" name="ISession session" direction="In" isUnique="false">
+                  <elementDefinition Id="c869b1f8-05ae-476e-a38d-d10712d23ad1" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="deda056f-4762-45bf-b511-e3bcde2176cb" name="T1 GetById&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e732ca23-b40e-4513-b39d-4b2bdc3fdc5f" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e8c93ac7-3b9f-40b4-912f-2d0b13aef83d" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="652656e6-9b5f-4dba-8b6c-39eacc7e90cf" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4822d8bb-273a-4852-8242-6078f5fcb816" name="IEnumerable&lt;T1&gt; GetByIds&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7efd15a3-fc73-4bd3-b471-e67e4662c320" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2c6b9def-6b20-46cb-ab38-3ea7c1e31ff8" name="IList&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="0f59af1a-5ae0-4c9b-873f-de1da8ee4869" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="ef44da28-81a1-4fed-a77f-745a8e4b4fc2" name="IEnumerable&lt;T1&gt; GetAll&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0b3b5cc5-bc0e-479c-8629-58281d221f99" />
+          </operation>
+          <operation Id="d8a440f2-39c1-4442-80bb-218f3b9ad06e" name="IEnumerable&lt;T1&gt; Get&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7fa34bab-d8ae-413b-b094-1448a6204f24" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="35ffa9db-519b-408c-bfe3-f08a8fa6bbad" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="4dba53a8-591b-489c-9492-1d0160f9cc91" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d9cd8ac3-3505-4e82-b2f4-86207fd4b60f" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="2d0332a2-b80c-4f10-9e37-fed6b6fdc93e" />
+                  <defaultValue>
+                    <literalString Id="bcea8d4d-1086-4d22-ad6a-0db21cce47e3" name="DefaultValue" value="null">
+                      <elementDefinition Id="169f109b-4914-46a4-a6b3-8c646c60d958" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d4608f39-6d9c-4dff-b990-1f7dba010754" name="IEnumerable&lt;T1&gt; GetPage&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cb2a2dea-8e82-4601-82e3-10192ddb235c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="49785f55-9257-4039-a549-9a6c36a7b68d" name="int pageIndex" direction="In" isUnique="false">
+                  <elementDefinition Id="57301b90-dc5e-41ae-a711-43bb9b3149ca" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="83078943-9c2e-4f89-893e-ed1cb03c25a4" name="int pageSize" direction="In" isUnique="false">
+                  <elementDefinition Id="f203d4aa-255d-42b7-812d-5e62cfbb335a" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cf0c31b1-34da-4d45-ab00-512f3bc3bfe8" name="long allRowsCount" direction="Out" isUnique="false">
+                  <elementDefinition Id="89a43e4a-921e-443c-a1c9-7e3975bb4f9e" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8e73f570-4698-4f3a-bbe6-17217142c7dc" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="9885b937-890a-4427-afa0-5985825fc607" />
+                  <defaultValue>
+                    <literalString Id="73fb05ac-d149-4e02-a642-c8fa2e122031" name="DefaultValue" value="null">
+                      <elementDefinition Id="cb42d119-21b2-40c7-bee0-401c82c89000" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="55a8b126-5339-4e12-b700-aba282657146" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="247326aa-9844-435d-82bd-0c8747c31d05" />
+                  <defaultValue>
+                    <literalString Id="8b5ca953-6c53-4d8a-8574-88075220e2a2" name="DefaultValue" value="null">
+                      <elementDefinition Id="2a1a65ed-22e1-40b9-b786-61277398f562" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="144accb1-cb05-47c8-9b0b-cc20b76c6d55" name="Int32 Execute&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bcd1cfa5-ed4a-42b8-98a3-4d00e9a11e18" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="92a3c130-19e0-469e-bed5-576ac719972c" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="5543d7e3-9003-459e-8080-42470913fa3b" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8db03b33-9117-4787-95b1-ec00225fa94e" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="0be9a959-a05b-4f28-ad65-84b02f0f51bf" />
+                  <defaultValue>
+                    <literalString Id="dd986c23-2ea8-4a7d-84a7-260259b09f4c" name="DefaultValue" value="null">
+                      <elementDefinition Id="fa3bce5b-385a-4f2e-9a61-f6d62c878487" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5db46b20-8681-42bb-86b0-07917ac08531" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="fe85837f-e548-4139-9b22-f02ce298833d" />
+                  <defaultValue>
+                    <literalString Id="fad167c6-efff-4e1d-8a71-97dbc4a0fde7" name="DefaultValue" value="null">
+                      <elementDefinition Id="a7a2c73e-d3db-423e-85d3-3103a10a417e" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="0c52ac01-471e-4b67-ab2e-ad239ac848df" name="dynamic Insert&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2bb1bc3c-5e63-416b-8563-fab5341e0306" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5d8daece-9c0c-41ab-b831-b395eae79831" name="T1 entity" direction="In" isUnique="false">
+                  <elementDefinition Id="eb5f8925-9ed5-4164-9bf1-72c77d3329e7" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e40634ab-6636-4671-ba5b-756263eed589" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="689dc733-a443-46b0-9d2d-cdecd0b395fc" />
+                  <defaultValue>
+                    <literalString Id="2a9a827d-4796-4ccd-983f-06eaed2ca89e" name="DefaultValue" value="null">
+                      <elementDefinition Id="cf78ac89-8c09-4cca-9d59-db5ded8d34a0" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="b5b8c88f-7a3a-4da7-b5b5-bbf15b3bb217" name="void InsertBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="54be3171-c3fe-497f-9697-c3ad364d3505" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="795e1153-c512-4c1e-856b-638039d28575" name="IEnumerable&lt;T1&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="f4ceff8f-c4c1-4f42-8127-d454e46629fb" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="eb777962-d76c-460d-9e7c-b24bc70fe88a" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="d1504a8f-ecd6-41d4-9f79-70c886e1746b" />
+                  <defaultValue>
+                    <literalString Id="72c811a6-b70a-49a4-91ee-edc97692304b" name="DefaultValue" value="null">
+                      <elementDefinition Id="ec5f564c-3f6b-41c8-ade9-f05facbf8759" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f70fb114-0b90-4810-9e32-41ff0fe1ca5c" name="bool Update&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="69198435-59c1-487f-8e42-2210026cbbfd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7f9bcc10-b3e6-4c3f-8dd5-766d7b705b56" name="T1 entity" direction="In" isUnique="false">
+                  <elementDefinition Id="b3d88cb1-a48c-4cc1-a9eb-fab0f2eb79cc" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b6061ba4-c426-41c1-8a95-26516ea5c178" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="1a48a2f7-41a1-47bc-a7a5-5d4f7e326b7b" />
+                  <defaultValue>
+                    <literalString Id="1f2a4e1a-a4c3-47e6-9311-546deff7964b" name="DefaultValue" value="null">
+                      <elementDefinition Id="fe4eb20e-b8b5-4ba5-8f35-a23bf2b81dac" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="53f0fe9c-2fbe-427b-b215-25b88147d7de" name="bool UpdateBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3367d7f7-8ed0-45c5-a8f4-3d67e251c955" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6b1efd25-9093-434c-8eda-7240d5620684" name="IEnumerable&lt;T1&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="33e52bb4-b252-4fbf-b09a-8270ce99b889" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="35c4a077-c75f-478a-8aaf-268234064225" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="01ed43b4-44cd-41d0-a8b8-f2b56db47d2f" />
+                  <defaultValue>
+                    <literalString Id="4da24a3d-2290-4691-a756-4f7cb6fee471" name="DefaultValue" value="null">
+                      <elementDefinition Id="6f40c1af-2e16-4804-94f6-ab92a739a09f" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="fc3ccc2d-f57a-4669-ba54-d4f86aef1a6c" name="bool Delete&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f8ea1b58-5df7-49ea-98a4-280994aa7fca" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ec586188-ef96-4257-849e-c907d040174c" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="df1f9c1c-7201-4781-99cf-2c268524f4cc" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="907d5f5a-92bb-45d6-b517-06a4500636d2" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="64d0c6dd-dd46-4284-82d9-0b92314f7b2d" />
+                  <defaultValue>
+                    <literalString Id="422a5163-8afc-47fe-9627-66c10646390e" name="DefaultValue" value="null">
+                      <elementDefinition Id="f5141321-6312-4103-b7d7-aae3f87183b9" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5b5dab5e-3585-48b1-89ab-fc4c6463a6af" name="bool Delete&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="6c4cdbcc-a599-4610-a2c3-cbd136846202" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4c750c0a-7f1a-455d-83ac-6971d534ba0c" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="3dcca285-578b-4d86-8933-58619ac44ea4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="224467f6-c519-461d-8470-946cbd478b84" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="6239d73c-caa2-4702-a075-75e7c025b704" />
+                  <defaultValue>
+                    <literalString Id="ee4646d2-ea98-4c43-a069-e15859bc4618" name="DefaultValue" value="null">
+                      <elementDefinition Id="494e2c0c-e0ee-47f3-b99a-4ea8330cb52b" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4100eefc-bebe-4de1-a366-55a934b29e54" name="bool DeleteBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="31dc8d8d-d24d-4e64-a263-ba3ca35dddc6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cbf0de20-18ab-48fe-93e6-f0905bb772f0" name="IEnumerable&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="6f62c413-5a6d-496d-a1f5-74744cf3a835" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5bc41378-b9b3-4fb1-8454-246fe55586d6" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="c92e5f35-7465-4497-af3a-e25671acd7fb" />
+                  <defaultValue>
+                    <literalString Id="540699c8-b5b8-45cd-a1fb-38dafdd35664" name="DefaultValue" value="null">
+                      <elementDefinition Id="243d475d-681e-45aa-a99f-56f637e711f9" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b3241565-ad15-4c43-8273-2768636a68c7" name="ServiceBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0c055ad1-f703-448e-8f05-4f3121576bbb" />
+        <suppliersInternal>
+          <interfaceRealization Id="775d86fe-789d-47ab-a898-92c5befc2873">
+            <interfaceMoniker Id="48c1a548-a9ac-4882-8b42-412bd0cc80d5" LastKnownName="IService" />
+            <elementDefinition Id="79864add-dd78-4b66-b79b-bd461e3e1238" />
+          </interfaceRealization>
+          <dependency Id="d7e5941f-1236-4565-987c-ee039ae22f78">
+            <interfaceMoniker Id="2613176c-7bc8-496b-8d75-4e11b3e69fc3" LastKnownName="IDataRepository" />
+            <elementDefinition Id="7225d79a-680b-465e-bd76-e92ae717d202" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="ba98c5bf-4d53-4ef9-9c3c-341b648af808" name="void Initialize" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8543f68f-fd32-45ab-80fb-4ca1b891e919" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f1c0c9e9-06dc-4187-8c68-a3664f36061c" name="IContainer container" direction="In" isUnique="false">
+                  <elementDefinition Id="1928f45d-c74d-49f9-b9a6-477b1b8fcadc" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ca056648-283a-49df-953f-1d48916d5bd9" name="ISession session" direction="In" isUnique="false">
+                  <elementDefinition Id="7d44ca99-e516-4a0f-8bda-59074e309710" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="af2245b0-7061-410a-9fe9-9d5d3bfda753" name="T1 GetById&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8a64d0be-37a8-4e36-9567-32924fbd01ce" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9637b329-81d1-494e-91af-7637d3b8d4d0" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="125993ff-55e6-4097-9995-e2c88bcf70dd" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="04a07d69-5d8b-49ae-97b4-3b26cec9c35a" name="IEnumerable&lt;T1&gt; GetByIds&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="85f74fa5-d6de-474f-b302-672c524c61c1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="178eaaaa-e080-49ed-a9f2-2ccc5a34a908" name="IList&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="a0bad4bc-a71a-4454-894d-9a7f2bc7da90" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="e635311f-00fa-45b1-93c9-139da452c6ba" name="IEnumerable&lt;T1&gt; GetAll&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7c8d65db-b596-4a49-a633-e2ea5a203b5f" />
+          </operation>
+          <operation Id="1078f0ff-0637-4523-bc39-1d8de40dd332" name="IEnumerable&lt;T1&gt; Get&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f1748000-b29b-470a-bfd0-49e96cfc2c55" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c217f532-e4a3-4757-bfe4-a00036c4979a" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="66a6a3e1-8073-47eb-b5c3-a47e8a4c1354" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="909eace8-5274-46ce-808e-349340137649" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="74e357ac-cf01-4740-bdb9-84e020adca29" />
+                  <defaultValue>
+                    <literalString Id="a56c2a98-80d2-4459-b88a-08e9798f57c1" value="null">
+                      <elementDefinition Id="d0a162dd-2658-41d2-bf96-78ae0ef6c1f9" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="741bb534-29f7-413b-8a89-ccd36cef77c9" name="IEnumerable&lt;T1&gt; GetPage&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="31a7e857-668e-4a23-9491-b39d262b7f1a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="646e603c-88ec-4684-97c8-63752e1fb54d" name="int pageIndex" direction="In" isUnique="false">
+                  <elementDefinition Id="8788d3a7-9cf2-42d4-89d5-d5c4e26a9672" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ea61158a-49b2-42d8-97ef-d8bf6d7c19db" name="int pageSize" direction="In" isUnique="false">
+                  <elementDefinition Id="42310486-4198-4ecb-bd8c-c6d2a59666fe" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="01dfe5ec-b62e-4d55-bb5b-2c4f035a1c59" name="long allRowsCount" direction="Out" isUnique="false">
+                  <elementDefinition Id="c683f001-53d9-41d1-ae6c-40aa0a3f43a2" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="07db4286-54a1-47a3-8b6e-5badb2e8f4bb" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="5208e688-3a68-4fc6-b9db-e15e07be4c86" />
+                  <defaultValue>
+                    <literalString Id="3cb1aeaf-8ec5-4336-a08d-bdba8413f140" value="null">
+                      <elementDefinition Id="62defa69-ce76-4dac-9c91-1bf5521385c3" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a7836ad8-f272-42ed-a7b6-b1f1191a2fc9" name="IList&lt;ISort&gt; sort" direction="In" isUnique="false">
+                  <elementDefinition Id="9ed2e4d1-b303-4d36-b1a7-7c6950f3e9e7" />
+                  <defaultValue>
+                    <literalString Id="abcc5029-1c40-4521-a613-be21ddb75253" value="null">
+                      <elementDefinition Id="1d5f6915-88c8-4673-a903-b5848c55ab48" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="73deed16-2feb-47b9-8619-029837e4808a" name="Int32 Execute&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="74c3562e-107b-4890-9704-fcf01341b6c4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c517a8c5-5278-4b0d-809d-ea2f29d1e04d" name="string sql" direction="In" isUnique="false">
+                  <elementDefinition Id="974a230a-946b-4a31-9124-4f5ae1886245" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="debafda0-f87f-403a-8b93-791d7373e24e" name="dynamic param" direction="In" isUnique="false">
+                  <elementDefinition Id="8965c0ef-6663-47e6-a6cf-5cf39a9bea05" />
+                  <defaultValue>
+                    <literalString Id="aac49c98-06d0-49f1-9306-23c4f031b3fa" value="null">
+                      <elementDefinition Id="4c8c66c0-341b-450b-adef-5e5c1fe9d3fa" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b88b0610-f9e7-4aae-9fa3-47e565f5a626" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="7c3ddb0b-d034-41b4-aff3-90bf2a17a552" />
+                  <defaultValue>
+                    <literalString Id="c641671b-1df6-431b-b92f-f23ac6e6cff4" value="null">
+                      <elementDefinition Id="81b1eafe-7c6d-4da6-a31b-a2932235e903" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="25fc7fc5-4828-4681-9c94-92241c076e37" name="dynamic Insert&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f28951b3-b2e9-47cc-b328-7232966b3287" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0dde5724-3440-425f-b391-1e7104ef23fe" name="T1 entity" direction="In" isUnique="false">
+                  <elementDefinition Id="8c6aa58e-d128-4871-aa40-843fd3d67650" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0702ce92-0f64-4731-ac80-bd51d611c229" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="606a40a3-b4de-44c0-97a9-d2189d1278f5" />
+                  <defaultValue>
+                    <literalString Id="ea1ea735-d71a-49ee-9c50-ec333250f975" value="null">
+                      <elementDefinition Id="22efb29f-f02d-4115-9300-8ab28dfb7e48" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="42cb9190-df4c-4619-bab9-cdb58b4cfd70" name="void InsertBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="13f3622e-f7e0-487a-a46e-04c71b3844c6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5f1798d8-e464-4eba-af09-c05e671b72ca" name="IEnumerable&lt;T1&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="d0c86d52-e8a6-4274-9dcd-023aea3aba2c" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b515b0fc-c217-4777-adb3-98e380e96e27" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="93b3fe1b-6b22-493d-8c5e-d7726bcc187d" />
+                  <defaultValue>
+                    <literalString Id="89fe4ad8-df30-40df-a810-216e4db4ac9a" value="null">
+                      <elementDefinition Id="0dafccd5-9c2d-44da-942b-6ab71b70f179" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="b6c02816-6fd3-4775-9295-de9ea6b425d4" name="bool Update&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a89fae11-2ce2-42c5-bee7-16d62b5969ae" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fcb1742f-9601-4f26-b763-fede45a5f6ab" name="T1 entity" direction="In" isUnique="false">
+                  <elementDefinition Id="8cf3e782-ef8c-41c0-a2f9-4d88e155be7e" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d86f7811-d4ed-4748-901b-d3105b745683" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="11400cc4-adea-4f33-9d2e-e82fe116f20e" />
+                  <defaultValue>
+                    <literalString Id="c5f68787-fe44-4512-83ba-183c47077e1c" value="null">
+                      <elementDefinition Id="e2ddd007-950e-47de-888f-d66adf20f6f8" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="82bf2a7d-dfbb-400f-9be6-e51fa528a5b0" name="bool UpdateBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b1beaf88-0103-4701-ab5a-0918f1010304" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4095c25f-3e4c-4065-8a98-ac4f072d71bf" name="IEnumerable&lt;T1&gt; entityList" direction="In" isUnique="false">
+                  <elementDefinition Id="e6abc10d-e4ba-458a-b6fc-a38bebf5d5a4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4a0ee195-2830-48a0-b445-95101de536af" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="27e39196-f8ab-481c-949e-b8dfb9a4b1f7" />
+                  <defaultValue>
+                    <literalString Id="3c4f5935-db34-4871-9aaa-9c6e92fdaa68" value="null">
+                      <elementDefinition Id="c14de602-c113-41f3-8cca-d111315ed944" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="ff06f156-0fc3-4aae-ab57-4d522260e234" name="bool Delete&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0e78991e-46fd-4f2d-a5fd-7c378781d8c5" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5cab31ae-937f-4c99-94d2-5e8fe85ce06a" name="dynamic primaryId" direction="In" isUnique="false">
+                  <elementDefinition Id="08854f15-a091-4b5a-847a-6a87e30c4be1" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4da7274a-b492-4d49-8356-da02580e53d3" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="ea88c5ed-704d-4c49-8d3c-4f391888cd25" />
+                  <defaultValue>
+                    <literalString Id="795b409c-503b-4188-a03f-8dbe4730ffca" value="null">
+                      <elementDefinition Id="7d078e79-9890-48ba-abad-3eaa983b6cb0" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="0a6fe8fb-1994-450b-81cf-8ce1c2197ebc" name="bool Delete&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ea2d0aa7-29b0-4d41-a28c-b43aff5d2fc9" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="059eb7e8-5811-4ded-a93b-51efe61bb057" name="IPredicate predicate" direction="In" isUnique="false">
+                  <elementDefinition Id="200c12e1-d01f-4435-a460-ac49cb28e6e6" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4e81ba42-5b2c-4d81-8f57-e4abbee23405" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="f50368d2-3973-4004-b994-a91b690acbea" />
+                  <defaultValue>
+                    <literalString Id="f7ac5ac8-485e-4561-af22-d8a8796dbfbd" value="null">
+                      <elementDefinition Id="74c11903-06d8-4422-adfd-624d9304620f" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f0fd7171-3896-4e10-94aa-eef8137685a2" name="bool DeleteBatch&lt;T1, T2&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f686eb60-5775-4431-bf58-999538e89a55" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e845aa5a-783c-428d-80c3-6293fc6a3576" name="IEnumerable&lt;dynamic&gt; ids" direction="In" isUnique="false">
+                  <elementDefinition Id="a3234778-6b6c-4e49-b4cc-649b1ace6c59" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a305dd54-f673-4563-9919-40a2e1a91bf6" name="IDbTransaction transaction" direction="In" isUnique="false">
+                  <elementDefinition Id="ee70b3de-a3fe-4328-992a-c3bdc7fca2a5" />
+                  <defaultValue>
+                    <literalString Id="1a46c665-6d57-4ed7-a3e9-98e822ac3320" value="null">
+                      <elementDefinition Id="ca0a3917-1de9-4154-972c-4e1527c5f58d" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="96de6ee6-78b5-489f-87c4-24b75fb14bf1" name="ProductWebModeling">
+    <elementDefinition Id="643f31ec-e26f-4cfc-b99e-e7f1e448a12b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="ec204b8b-cd85-4173-8e8f-81c58c3186e6">
+        <profileInstance Id="de264892-2adb-4a3b-b1d8-036d795357f1" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="393789c7-b45b-419c-8e8a-5ba62f8ab9ad">
+        <profileInstance Id="bbc14bb4-ff80-4b8b-bab9-d900308fc5ec" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

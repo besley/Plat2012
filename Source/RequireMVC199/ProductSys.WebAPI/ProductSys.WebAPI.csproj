@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22837D3A-AC8B-4EF1-B881-EBEEA3A9FED2}</ProjectGuid>
+    <ProjectGuid>{2D3440D4-B154-4205-A032-000F2C0EF30B}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RequireMVC199</RootNamespace>
-    <AssemblyName>RequireMVC199</AssemblyName>
+    <RootNamespace>ProductSys.WebAPI</RootNamespace>
+    <AssemblyName>ProductSys.WebAPI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,48 +40,72 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MefContrib">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\MefContrib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text">
-      <HintPath>F:\TAOWeb\Source\PlatFramework\Library\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=1.6.0.12319, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions, Version=1.6.0.12319, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\SimpleInjector.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\HttpContextShim.0.0.5\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-    </Reference>
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
@@ -88,6 +113,12 @@
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -105,30 +136,43 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\..\..\..\TAOWeb\Source\PlatFramework\Library\Antlr3.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Controllers\MutipleController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\StorageCheckController.cs" />
-    <Compile Include="Controllers\StorageController.cs" />
-    <Compile Include="Controllers\SubController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequireJS\RequireJSConfigAttribute.cs" />
-    <Compile Include="RequireJS\RequireJSController.cs" />
-    <Compile Include="RequireJS\RequireJSHelper.cs" />
-    <Compile Include="RequireJS\RequireJSOptions.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Content\Style.css" />
+    <Compile Include="Controllers\FunctionMenuController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\OrderViewController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\StorageCheckController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\ApplicationMediator.cs" />
+    <Compile Include="Core\PluginManager.cs" />
+    <Compile Include="Core\PluginRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ServiceManager.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Core\ServiceContainerManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -151,15 +195,12 @@
     <Content Include="Content\themes\base\jquery.ui.core.css" />
     <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
     <Content Include="Content\themes\base\jquery.ui.dialog.css" />
-    <Content Include="Content\themes\base\jquery.ui.menu.css" />
     <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
     <Content Include="Content\themes\base\jquery.ui.resizable.css" />
     <Content Include="Content\themes\base\jquery.ui.selectable.css" />
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
-    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -180,52 +221,30 @@
     <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\common.js" />
-    <Content Include="ViewJS\Controllers\Home\Home-Index.js" />
-    <Content Include="ViewJS\Controllers\Main\AddController.js" />
-    <Content Include="ViewJS\Controllers\Main\ListController.js" />
-    <Content Include="ViewJS\Controllers\Mutiple\Mutiple-Index.js" />
-    <Content Include="ViewJS\Controllers\Order\Order-Detail.js" />
-    <Content Include="ViewJS\Controllers\Order\Order-List.js" />
-    <Content Include="ViewJS\Controllers\Product\Product-Detail.js" />
-    <Content Include="ViewJS\Controllers\Product\Product-List.js" />
-    <Content Include="ViewJS\Controllers\StorageCheck\StorageCheck-Index.js" />
-    <Content Include="ViewJS\Controllers\StorageCheck\StorageCheck-Detail.js" />
-    <Content Include="ViewJS\Controllers\StorageCheck\StorageCheck-List.js" />
-    <Content Include="ViewJS\Controllers\Storage\Storage-Detail.js" />
-    <Content Include="ViewJS\Controllers\Storage\Storage-List.js" />
-    <Content Include="ViewJS\Controllers\Sub\Sub-Index.js" />
-    <Content Include="ViewJS\entryOfForm.js" />
-    <Content Include="ViewJS\entryOfHome.js" />
-    <Content Include="ViewJS\entryOfList.js" />
-    <Content Include="ViewJS\temp\main.js" />
-    <Content Include="ViewJS\temp\MyMath.js" />
-    <Content Include="ViewJS\temp\Router.js" />
-    <Content Include="Models\User.js" />
-    <Content Include="RequireJSOfList.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="RequireJSOfForm.config" />
-    <Content Include="RequireJSOfHome.config" />
-    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.min.js" />
-    <Content Include="Scripts\r.js" />
-    <Content Include="Scripts\require.js" />
-    <Content Include="ViewJS\Controllers\Main\AddView.js" />
-    <Content Include="ViewJS\Controllers\Main\ListView.js" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Plugins\PluginsConfig.xml" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -233,38 +252,55 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\_RequireSetupOfForm.cshtml" />
-    <Content Include="Views\Product\ProductList.cshtml" />
-    <Content Include="Views\Shared\_RequireSetupOfList.cshtml" />
-    <Content Include="Views\Shared\_LayoutOfList.cshtml" />
-    <Content Include="Views\Product\ProductForm.cshtml" />
-    <Content Include="Views\Order\OrderForm.cshtml" />
-    <Content Include="Views\Order\OrderList.cshtml" />
-    <Content Include="Views\StorageCheck\StorageCheckForm.cshtml" />
-    <Content Include="Views\StorageCheck\StorageCheckList.cshtml" />
-    <Content Include="Views\Storage\StorageForm.cshtml" />
-    <Content Include="Views\Storage\StorageList.cshtml" />
-    <Content Include="Views\Home\HomeIndex.cshtml" />
-    <Content Include="Views\Shared\_LayoutOfHome.cshtml" />
-    <Content Include="Views\Shared\_LayoutOfForm.cshtml" />
-    <Content Include="Views\Shared\_RequireSetupOfHome.cshtml" />
-    <Content Include="Views\Mutiple\MutipleIndex.cshtml" />
-    <Content Include="Views\Sub\SubIndex.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Main\List.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RequireJS.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\PlatFramework\DapperExtensions\DapperExtensions.csproj">
+      <Project>{4c1a2c6c-a469-4c87-98d1-f1d517fa1acf}</Project>
+      <Name>DapperExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Dapper\Dapper.csproj">
+      <Project>{daf737e1-05b5-4189-a5aa-dac6233b64d7}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.DataRepository\Plat.DataRepository.csproj">
+      <Project>{069ec405-4781-4f95-8201-2820723abdab}</Project>
+      <Name>Plat.DataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.ExceptionHelper\Plat.ExceptionHelper.csproj">
+      <Project>{1e30823b-341c-4e99-88e4-8b90836c4cfb}</Project>
+      <Name>Plat.ExceptionHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.Logging\Plat.Logging.csproj">
+      <Project>{309b3483-bfe2-4ebd-999e-2560c958f174}</Project>
+      <Name>Plat.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlatFramework\Plat.ServiceBuilder\Plat.ServiceBuilder.csproj">
+      <Project>{2cbbc90a-b6ff-48d9-b59d-e4284c8b17c4}</Project>
+      <Name>Plat.ServiceBuilder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PlatFramework\Plat.WebUtility\Plat.WebUtility.csproj">
       <Project>{b90de653-f768-465a-bb23-3b5b4d89c96c}</Project>
       <Name>Plat.WebUtility</Name>
@@ -272,6 +308,22 @@
     <ProjectReference Include="..\ProductSys.BizEntity\ProductSys.BizEntity.csproj">
       <Project>{10b0c2c2-1477-45b5-8ee6-f82fff03340e}</Project>
       <Name>ProductSys.BizEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TR.Datasource\TR.Datasource.csproj">
+      <Project>{a1ca8bd6-0ce5-4f17-825c-fd16197212da}</Project>
+      <Name>TR.Datasource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.DAL\ProductSys.DAL.csproj">
+      <Project>{8b0791c1-7766-43dc-9be4-2edfeda14690}</Project>
+      <Name>ProductSys.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.Interface\ProductSys.Interface.csproj">
+      <Project>{988a3b43-1193-436a-b4f0-d844506b736f}</Project>
+      <Name>ProductSys.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductSys.ServiceImp\ProductSys.ServiceImp.csproj">
+      <Project>{1d0002ad-fa14-4127-afde-6adb6619f6e1}</Project>
+      <Name>ProductSys.ServiceImp</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -290,9 +342,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>10524</DevelopmentServerPort>
+          <DevelopmentServerPort>6826</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8081/RequireMVC199/</IISUrl>
+          <IISUrl>http://PlatWeb/ProductSys.WebAPI</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -302,6 +354,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\PostSharp.2.1.7.22\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.2.1.7.22\tools\PostSharp.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

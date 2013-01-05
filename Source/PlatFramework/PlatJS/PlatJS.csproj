@@ -560,7 +560,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8296</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8081/PlatJS</IISUrl>
+          <IISUrl>http://PlatWeb/PlatJS</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

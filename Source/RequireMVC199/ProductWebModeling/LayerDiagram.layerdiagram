@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="90294395-2e29-4597-9970-ce4613bf2f1b" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="5744b11e-8ad6-4e99-a2d0-26ea575fb034" name="Comment1">
+      <body>Data Storage Layer</body>
+    </comment>
+    <comment Id="ca5402d1-a723-4ca9-9a24-c7722a03b01e" name="Comment11">
+      <body>Service Logic  Layer</body>
+    </comment>
+    <comment Id="297a20de-5c68-4fee-8f86-bc1c0299128b" name="Comment111">
+      <body>Web Presentation Layer</body>
+    </comment>
+    <comment Id="92d6da31-4859-44fb-9a91-e1fbf139bdc8" name="Comment12">
+      <body>Data Access Layer</body>
+    </comment>
+    <comment Id="62e31ba2-d601-41d9-b857-ce574ecf65e1" name="Comment2">
+      <body>IE/Firefox/Chrome</body>
+    </comment>
+    <comment Id="e335d1cb-a942-42b3-9232-eaf0d7ae92b1" name="Comment3">
+      <body>http/https</body>
+    </comment>
+    <comment Id="17421bc2-bc21-42e4-9212-f9d3f0f3cfaa" name="Comment4">
+      <body>http/https</body>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="450e0482-f7bf-4ea4-a40d-69c76b822945" name="Plat.DataRepository &#xD;&#xA;(Data Access)" />
+    <layer Id="5d01b3a0-f732-4dd1-b17c-8cfe539ad156" name="Plat.ServiceBuilder&#xD;&#xA;(Service Operation Base)" />
+    <layer Id="ee624fd6-1776-433c-9879-a0ef4dedf543" name="ProductSys.DAL&#xD;&#xA;(Data Entity)" />
+    <layer Id="0ebbf1ee-c6f5-4193-b97d-7d62b53b2e03" name="ProductSys.Interface&#xD;&#xA;(Service Interface Declration)" />
+    <layer Id="12ee9859-d5c5-41ae-840c-28415abb0c55" name="ProductSys.ServiceImp&#xD;&#xA;(Service Implematation)" />
+    <layer Id="ebe0029b-85ab-4fa4-9225-daab9cf9d141" name="ProductSys.WebAPI&#xD;&#xA;(WebAPI Publishion)" />
+    <layer Id="f10b5c6d-13dd-4bce-8448-683a4dcf408f" name="ProductSys.BizEntity&#xD;&#xA;(Business Entity)" />
+    <layer Id="29c2b075-ef27-4811-85ab-2e93963f0a93" name="PlatJS&#xD;&#xA;(Javascript/JQuery/Plugin)" />
+    <layer Id="0191a79d-24b6-42d6-86da-82ea91c8109c" name="RequireMVC199&#xD;&#xA;(Web Application)" />
+    <layer Id="27a612d3-2b5e-4934-8bb0-82e05110500b" name="Database" />
+  </layers>
+</layerModel>
