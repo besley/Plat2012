@@ -110,7 +110,8 @@ namespace DapperExtensions
         static DapperExtensions()
         {
             DefaultMapper = typeof(AutoClassMapper<>);
-            SqlDialect = new SqlServerDialect();
+            //SqlDialect = new SqlServerDialect();
+            SqlDialect = new MySqlDialect();
         }
 
         /// <summary>

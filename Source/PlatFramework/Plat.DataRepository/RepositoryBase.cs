@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
 using DapperExtensions;
@@ -261,34 +260,34 @@ namespace Plat.DataRepository
         /// <param name="entityList"></param>
         public void InsertBatch<T>(IEnumerable<T> entityList, IDbTransaction transaction = null) where T : class
         {
-            var tblName = string.Format("dbo.{0}", typeof(T).Name);
-            var conn = (SqlConnection)_session.Connection;
-            var tran = (SqlTransaction)transaction;
-            using (var bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.TableLock, tran))
-            {
-                bulkCopy.BatchSize = entityList.Count();
-                bulkCopy.DestinationTableName = tblName;
-                var table = new DataTable();
-                var props = TypeDescriptor.GetProperties(typeof(T))
-                                            .Cast<PropertyDescriptor>()
-                                            .Where(propertyInfo => propertyInfo.PropertyType.Namespace.Equals("System"))
-                                            .ToArray();
-                foreach (var propertyInfo in props)
-                {
-                    bulkCopy.ColumnMappings.Add(propertyInfo.Name, propertyInfo.Name);
-                    table.Columns.Add(propertyInfo.Name, Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType);
-                }
-                var values = new object[props.Length];
-                foreach (var itemm in entityList)
-                {
-                    for (var i = 0; i < values.Length; i++)
-                    {
-                        values[i] = props[i].GetValue(itemm);
-                    }
-                    table.Rows.Add(values);
-                }
-                bulkCopy.WriteToServer(table);
-            }
+            //var tblName = string.Format("dbo.{0}", typeof(T).Name);
+            //var conn = (SqlConnection)_session.Connection;
+            //var tran = (SqlTransaction)transaction;
+            //using (var bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.TableLock, tran))
+            //{
+            //    bulkCopy.BatchSize = entityList.Count();
+            //    bulkCopy.DestinationTableName = tblName;
+            //    var table = new DataTable();
+            //    var props = TypeDescriptor.GetProperties(typeof(T))
+            //                                .Cast<PropertyDescriptor>()
+            //                                .Where(propertyInfo => propertyInfo.PropertyType.Namespace.Equals("System"))
+            //                                .ToArray();
+            //    foreach (var propertyInfo in props)
+            //    {
+            //        bulkCopy.ColumnMappings.Add(propertyInfo.Name, propertyInfo.Name);
+            //        table.Columns.Add(propertyInfo.Name, Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType);
+            //    }
+            //    var values = new object[props.Length];
+            //    foreach (var itemm in entityList)
+            //    {
+            //        for (var i = 0; i < values.Length; i++)
+            //        {
+            //            values[i] = props[i].GetValue(itemm);
+            //        }
+            //        table.Rows.Add(values);
+            //    }
+            //    bulkCopy.WriteToServer(table);
+            //}
         }
 
         /// <summary>

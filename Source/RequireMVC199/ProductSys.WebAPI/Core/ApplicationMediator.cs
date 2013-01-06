@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using SimpleInjector;
 using Plat.ServiceBuilder.Injection;
 using ProductSys.DAL;
@@ -113,7 +113,7 @@ namespace ProductSys.WebAPI.Core
             if (String.IsNullOrEmpty(connectionString))
                 throw new ApplicationException("数据库连接字符串不能为空！请检查！");
 
-            IDbConnection connection = new SqlConnection(connectionString);
+            IDbConnection connection = SqlConnectionFactory.CreateSqlConnection(DatabaseType.MySql, connectionString);
 
             MainContainerCached.Register<IProductDatabase>(() =>
             {
@@ -133,7 +133,7 @@ namespace ProductSys.WebAPI.Core
             if (String.IsNullOrEmpty(connectionString))
                 throw new ApplicationException("数据库连接字符串不能为空！请检查！");
 
-            IDbConnection connection = new SqlConnection(connectionString);
+            IDbConnection connection = SqlConnectionFactory.CreateSqlConnection(DatabaseType.MySql, connectionString);
 
             MainContainerCached.Register<IStorageDatabase>(() =>
             {

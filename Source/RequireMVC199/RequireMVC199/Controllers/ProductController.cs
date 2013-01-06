@@ -18,7 +18,7 @@ namespace RequireMVC199.Controllers
 
         public ProductController()
         {
-            base.ApiUrl = "http://localhost:8081/ProductSys.WebAPI/api/Product";
+            base.ApiUrl = "http://platweb/ProductSys.WebAPI/api/Product";
         }
 
         public ActionResult List()

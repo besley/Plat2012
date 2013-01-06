@@ -50,7 +50,7 @@
         }
 
         function loadMainGridData(functionId) {
-            if (functionId == 6) {
+            //if (functionId == 6) {
                 require(['Controllers/Product/Product-List'], function (listObject) {
                     $("#mainGridContainer").html("")
                         .load('/RequireMVC199/Product/List', function () {
@@ -58,7 +58,7 @@
                             $("#mainGridContainer").focus();
                         });
                 });
-            }
+            //}
         }
 
         return homeIndexClass;

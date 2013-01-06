@@ -45,91 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EPFunction.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EPOrder.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EPProduct.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EPRole.cs" />
-    <Compile Include="EPStorage.cs">
-      <DependentUpon>StorageModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EPStorageCheck.cs">
-      <DependentUpon>StorageModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="EPFunction.cs" />
+    <Compile Include="EPOrder.cs" />
+    <Compile Include="EPProduct.cs" />
+    <Compile Include="EPStorage.cs" />
+    <Compile Include="EPStorageCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StorageModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StorageModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StorageModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StorageModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StorageModel.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-    </None>
-    <EntityDeploy Include="ProductModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProductModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ProductModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductModel.edmx</DependentUpon>
-      <LastGenOutput>ProductModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="ProductModel.edmx.diagram">
-      <DependentUpon>ProductModel.edmx</DependentUpon>
-    </None>
-    <None Include="ProductModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductModel.edmx</DependentUpon>
-      <LastGenOutput>ProductModel.cs</LastGenOutput>
-    </None>
-    <EntityDeploy Include="StorageModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StorageModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="StorageModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StorageModel.edmx</DependentUpon>
-      <LastGenOutput>StorageModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="StorageModel.edmx.diagram">
-      <DependentUpon>StorageModel.edmx</DependentUpon>
-    </None>
-    <None Include="StorageModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StorageModel.edmx</DependentUpon>
-      <LastGenOutput>StorageModel.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

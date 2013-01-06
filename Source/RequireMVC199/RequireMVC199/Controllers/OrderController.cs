@@ -15,7 +15,7 @@ namespace RequireMVC199.Controllers
     {
         public OrderController()
         {
-            base.ApiUrl = "http://localhost:8081/ProductSys.WebAPI/api/OrderView";
+            base.ApiUrl = "http://platweb/ProductSys.WebAPI/api/OrderView";
         }
 
         public ActionResult List()

@@ -15,7 +15,7 @@ namespace ProductWebPortal.Controllers
     {
         public StorageCheckController()
         {
-            base.ApiUrl = "http://localhost:8081/ProductSys.WebAPI/api/StorageCheck";
+            base.ApiUrl = "http://platweb/ProductSys.WebAPI/api/StorageCheck";
         }
 
         //
