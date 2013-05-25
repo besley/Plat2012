@@ -6,6 +6,7 @@ plat framework with vs2012
 项目描述
 
 基于MVC, WebApi, Dapper的3层分布式架构开发框架，其特点是：
+
 1. 采用Dapper微ORMapping框架，性能接近原生SQL；
 2. 采用Repository模式；
 3. 采用面向Interface接口编程规范；
