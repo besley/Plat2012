@@ -3,6 +3,17 @@ Plat2012
 
 plat framework with vs2012
 
+项目描述
+
+基于MVC, WebApi, Dapper的3层分布式架构开发框架，其特点是：
+1. 采用Dapper微ORMapping框架，性能接近原生SQL；
+2. 采用Repository模式；
+3. 采用面向Interface接口编程规范；
+4. 采用WebApi实现服务总线;
+5. 前端SlickGrid数据控件展现，Web富交互功能实现；
+6. 前端RequireJS框架，解决脚本加载和命名冲突。
+
+
 Plat framework is a basic library for an enterprise information system or website project. Some new features have been 
 implemenmted in the solution. The solution is designed for 3-tier distributed system, SOA based system, Repository pattern, POCO
 entity pattern, plugin architecture and asp.net mvc/web api architecture. There are some details  described here:
